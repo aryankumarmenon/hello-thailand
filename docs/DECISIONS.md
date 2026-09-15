@@ -4,7 +4,8 @@ Why the product is shaped the way it is. Decided in a structured interview and s
 passes on 15 Sep 2026. Technical decisions live in `adr/`; the resulting spec is in `PLAN.md`.
 
 To change a decision: agree it between both owners, edit the row here with the new answer, the date and the reason,
-then update `PLAN.md`. Rows under **Closed** stay closed unless a listed reopen condition is met.
+then update `PLAN.md`. Rows under **Closed** stay closed unless a listed reopen condition is met. Rows under **Open** are not decided yet;
+when both owners decide one, move it into its section with the date.
 
 ## Frame
 
@@ -64,8 +65,14 @@ then update `PLAN.md`. Rows under **Closed** stay closed unless a listed reopen 
 | Photos       | Licensed sources only, collected by script with licence and credit | India's Copyright Act has no pet-project exemption; a takedown could remove the site |
 | Look         | Gen-Z bento, Thai flag palette (beige/navy/red)                    | Aryan's direction; red as accent avoids a government look                            |
 | Fonts        | Fraunces or Space Grotesk + Inter                                  | Editorial headings, readable body                                                    |
-| Hosting      | Vercel Hobby, non-commercial                                       | Free; the Vercel connector can deploy it                                             |
+| Hosting      | Vercel Hobby, non-commercial                                       | Free                                                                                 |
 | Repo         | Public; code MIT, content all rights reserved                      | Portfolio visibility without giving away the research                                |
+
+## Open — decide by the listed date
+
+| Item         | Why it is open                                                                                                                                                                                                                                                    | Decide by                                                  |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Product name | An unrelated DTV visa agency already operates as "HelloThailand" at `hello-thailand.vercel.app` (checked 16 Sep 2026). Visitors could mistake this free planner for a paid visa service, or the reverse. Meanwhile the Vercel project is `hello-thailand-planner` | Before the first Reels or Reddit links, early October 2026 |
 
 ## Closed — do not reopen without the listed condition
 
