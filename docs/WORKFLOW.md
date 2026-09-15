@@ -99,7 +99,12 @@ Keep a stack to two branches.
 
 ## Merging a pull request
 
-TODO(human): choose the merge method for this repository and write the rule here in 2–4 lines.
+- Every pull request is squash-merged. `main` gets one commit per pull request, titled with the pull request
+  title, so its history reads like a changelog and one `git revert` undoes a milestone.
+- The step-by-step commits stay on the pull request page on GitHub. Rebase the branch on `origin/main` before
+  you merge, so the squashed commit is the exact tree CI tested.
+- After the merge, run `git switch main && git pull --ff-only && git branch -D <branch>`. A squashed branch is
+  not an ancestor of `main`, so `git branch -d` refuses to delete it.
 
 ## When something goes wrong
 
