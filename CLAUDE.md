@@ -36,6 +36,7 @@ it, and what is blocked.
 
 - Claim a milestone in `docs/STATUS.md` before starting it. One owner per milestone.
 - One branch per milestone (for example `m3-landing`), merged into `main` by pull request with CI green.
+  Branch names, rebasing, merging and the review agents in `.claude/agents/` are in `docs/WORKFLOW.md`.
 - Update `docs/STATUS.md` in the same pull request. A changed product decision goes in `docs/DECISIONS.md`, a
   changed technical decision becomes a new ADR, and `docs/PLAN.md` is updated to match.
 - Commit with your personal GitHub identity.
