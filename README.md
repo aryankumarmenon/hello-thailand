@@ -23,6 +23,9 @@ calling a change done.
 `src/ui` holds shared components. The layer rules are in `docs/adr/0001-single-app-feature-folders.md`
 and are enforced by ESLint. Terms are defined in `docs/CONTEXT.md`.
 
+Project context lives in `docs/`: `STATUS.md` (who is doing what), `PLAN.md` (what we build),
+`DECISIONS.md` (why), `RESEARCH.md` (sources) and `adr/` (technical decisions).
+
 ## Licence
 
 Code: MIT (`LICENSE`). Content in `content/`: all rights reserved (`content/LICENSE`).
