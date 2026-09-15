@@ -5,12 +5,12 @@ What we build and in what order. Why each choice was made is in `DECISIONS.md`; 
 
 ## Frame
 
-Hello Thailand is a Thailand trip planner for Indian travellers first, global later. It is a pet and
+Hello Thailand is a Thailand trip planner for any traveller. It is a pet and
 portfolio project: no revenue before the October 2026 field trip, and monetisation only if needed afterwards.
 It is AI-first where AI is cheap. Running cost is ₹0 except live AI, capped at $5 a month.
 
-The whole MVP is estimated at 135–185 hours, so work ships as a priority-ordered **pre-trip slice** (~40 hours of
-code plus a content track), then continues after the trip.
+The whole MVP is estimated at 135–185 hours, so work ships as a priority-ordered **pre-trip slice** (~29.5 hours of
+code by one person, plus a content track), then continues after the trip.
 
 ## Product spec
 
@@ -39,12 +39,28 @@ code plus a content track), then continues after the trip.
 - "Stays — coming soon" tab.
 - Post-trip: a one-line AI blurb for the current selection, precomputed at build time.
 
+### Day planner (Bangkok, pre-trip)
+
+- On a city page the visitor picks interests (topic chips) and a day length, and gets one day plan.
+- Each place gets a score: editorial popularity (1–5) × interest match. Travel between two places costs minutes.
+- The visitor can mark site places as must-include; the picker lists their want-to-go places first. Must-include
+  places are fixed stops.
+- The route starts from the must-include places or, with none, from the best place in the neighbourhood with the
+  highest total score. The planner then inserts the optional place with the most score per extra travel minute at
+  its cheapest position, until the day is full (cheapest insertion).
+- Must-include places in two neighbourhoods split the day into two halves with one transfer. A must-include place
+  that is closed or does not fit is listed under "Does not fit today" with the reason; it is never dropped silently.
+- Travel minutes start as a walking estimate from straight-line distance, with overrides such as a river ferry.
+- The plan shows numbered stops, time at each stop and travel minutes between stops.
+- Not a multi-day itinerary; that stays in the later roadmap. Custom places that are not on the site come after the
+  trip, with the map.
+
 ### Place page
 
 - Licensed photo with credit, or a branded placeholder.
 - Price in ฿ with a freshness pill (fresh < 90 days, aging 90–180, stale > 180) or a neutral "not yet verified" pill.
 - Hours, time needed, best time to go.
-- Indian-traveller notes: veg and Jain options, dress code, how to pay.
+- Traveller notes: dietary options (vegetarian, vegan, halal, Jain), dress code, how to pay.
 - Scam-alert box.
 - Want-to-go toggle stored in the browser.
 
@@ -107,8 +123,8 @@ Single Next.js 16 app. Rules and reasons are in `adr/0001`–`0003`; later ADRs 
 ```
 src/
   app/        routes only: page.tsx, [city]/page.tsx, [city]/[place]/page.tsx, guides/[slug]/, api/{parse-trip,ask}/
-  features/   landing-estimate/ city-explorer/ place/ currency/ guides/ ask-ai/
-  domain/     schemas/ estimate/ ranking/ fx/ freshness/ filters/   plain TS + zod, tests beside source
+  features/   landing-estimate/ city-explorer/ day-planner/ place/ currency/ guides/ ask-ai/
+  domain/     schemas/ estimate/ ranking/ planner/ fx/ freshness/ filters/   plain TS + zod, tests beside source
   content/    build-time loaders (fs + zod)
   server/     ai/ guard/{rate-limit,turnstile,kill-switch} fx/      every file imports "server-only"
   ui/         components/ tokens.css fonts.ts
@@ -123,34 +139,40 @@ docs/         PLAN STATUS DECISIONS RESEARCH CONTEXT adr/
 - Price: `{ thb, label, checkedOn, source }` or `{ status: "unverified" }`. Records carry a stable `id` and
   `source: "editorial" | "community"`.
 - Key functions: `estimateTrip(input, costs, seasons)`, `rankPlaces(places, { topics, neighbourhoods })`,
+  `planDay(places, { interests, mustInclude, minutes }, travelMinutes)`,
   `convertPrice(price, to, fx)`, `freshness(price, now)`, `parseTripDescription(text)`, `askGrounded(question)`,
   `rateLimit(visitorKey)`, `verifyTurnstile(token)`. AI functions return `Result<T, AiError>`.
 - Guides MDX: Content Collections after a 1-hour Turbopack spike; fallback `@next/mdx`.
 - Tooling: pnpm 10 (pinned), ESLint flat config + Prettier, TypeScript strict with `noUncheckedIndexedAccess` and
   `exactOptionalPropertyTypes`, Vitest 5, Playwright, GitHub Actions, Dependabot.
 - Planned ADRs: 0004 static-first and portability; 0005 THB prices and client-side freshness; 0006 FX fallback
-  chain; 0007 AI module and one `MODEL_ID`; 0008 AI guardrails; 0009 maps and build-time geocoding.
+  chain; 0007 AI module and one `MODEL_ID`; 0008 AI guardrails; 0009 maps and build-time geocoding; 0010 day planner scoring and route.
 
 ## Milestones
 
-### Pre-trip (~40 hours, in priority order; unfinished work continues after the trip)
+### Pre-trip (~29.5 hours of code by one person, in build order; unfinished work continues after the trip)
 
-| #   | Hours | Work                                                                                                                                                                      | Done when                                                                                                       |
-| --- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| M0  | 3     | Scaffold: pnpm pin, strict tsconfig, layer lint, Vitest, CI `check` job, glossary, ADRs 0001–0003                                                                         | CI green; preview deploy live                                                                                   |
-| M1  | 5     | Data pipeline: CSV import (column allowlist, BOM, drop Sleep rows), schemas, validate-content, privacy lint + pre-commit hook, Nominatim geocode with cache and overrides | Bangkok JSON committed; fixture test proves the Notes column never reaches output                               |
-| M2  | 4     | Tokens and core components (Button, Card, Chip, Toast, Sticker, NumberBadge, inputs, Header), light and dark, fonts                                                       | AA contrast in both themes                                                                                      |
-| M3  | 6     | Landing: SVG region map, synced chips, inputs, estimate card, season warning, coming-soon states                                                                          | `estimateTrip` unit tests; Playwright landing test                                                              |
-| M4  | 6     | Bangkok top-10 list and place pages (static), PriceBadge, freshness, want-to-go                                                                                           | Static pages built; want-to-go survives a reload in e2e                                                         |
-| M5  | 3     | Photos: Wikimedia Commons and Openverse scripts with licence and credit                                                                                                   | Every photo passes the credit schema                                                                            |
-| M6  | 8     | Bangkok map: MapLibre dynamic import, OpenFreeMap neutral style, numbered pins, mobile Map/List button, CARTO fallback                                                    | MapLibre absent from landing and place bundles; pin ↔ list highlight in e2e; works on a mid-range Android on 4G |
-| M7  | 2     | Ship: e2e and Lighthouse jobs, production deploy                                                                                                                          | Budgets pass on landing, Bangkok and one place page                                                             |
+Hours include a 1.5× allowance for learning the stack. The budget is ~25 hours, so the M8 planner UI slips first.
+Scope set on 15 Sep 2026, see `DECISIONS.md`.
 
-Content track before the trip (~10–15 hours): Bangkok top-10 rewrite with verified prices and notes; scam alerts;
-sourced cost tiers for Bangkok and Andaman; season calendar; a Reels shot list for the trip.
+| #       | Hours    | Work                                                                                                                                                                                                                                                                                 | Done when                                                                                                                            |
+| ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| M0      | 0.5 left | Scaffold: pnpm pin, strict tsconfig, layer lint, Vitest, CI `check` job, glossary, ADRs 0001–0003                                                                                                                                                                                    | CI green; preview deploy live                                                                                                        |
+| M1      | 7.5      | Data pipeline: CSV import (column allowlist, BOM, drop Sleep rows), schemas with planner fields (neighbourhood, topics, popularity, time needed, opening hours), validate-content, privacy lint + pre-commit hook, Nominatim geocode with cache and overrides                        | Bangkok JSON with coordinates committed; fixture test proves the Notes column never reaches output                                   |
+| M2-lite | 4        | Tokens, fonts and the components M4 uses (Button, Card, Chip, NumberBadge, Header, freshness pill), light theme                                                                                                                                                                      | AA contrast in the light theme                                                                                                       |
+| M4      | 9        | Bangkok top-10 list and place pages (static), PriceBadge, freshness, want-to-go, branded photo placeholder                                                                                                                                                                           | Static pages built; want-to-go survives a reload in e2e                                                                              |
+| M8      | 7.5      | Bangkok day planner: `planDay` in `domain/planner` (score, neighbourhood choice, cheapest insertion, day-length cut-off, closed places, must-include places), ADR 0010, day-plan list with interest chips, a must-include picker and a "Does not fit today" list on the Bangkok page | `planDay` unit tests from a worked Bangkok example, one per must-include edge case; Playwright: picking an interest changes the plan |
+| M7-lite | 1        | Ship: production deploy; `/` stays a simple page that links to Bangkok                                                                                                                                                                                                               | A manual Lighthouse run meets the budgets on `/`, Bangkok and one place page                                                         |
 
-### Post-trip (~64 hours, in order)
+Content track before the trip (on top of the code hours): Bangkok top-10 rewrite with verified prices and notes;
+planner data per Bangkok place (neighbourhood, popularity, time needed, opening hours); Bangkok scam alerts; a Reels shot list for the trip.
 
+### Post-trip (~64 hours plus the pre-trip cuts, in order)
+
+0. Pre-trip cuts: landing (SVG region map, synced chips, coming-soon states); calibrate planner travel minutes with
+   travel times noted on the trip; custom places in the day planner; dark mode and the remaining M2 components; trip
+   inputs, estimate card, season warning, sourced cost tiers, season calendar and Andaman scam alerts; photos (M5);
+   Bangkok map (M6); e2e and Lighthouse CI jobs
 1. Four more cities, photos, stale-price report (10)
 2. Sidebar topics and URL filter state (8)
 3. Maps for all cities (4)
@@ -164,7 +186,7 @@ sourced cost tiers for Bangkok and Andaman; season calendar; a Reels shot list f
 ## Verification
 
 - Vitest: estimate tiers and warnings; ranking order and facet relaxing; price conversion; freshness at 89, 90, 180
-  and 181 days; schema rejections; real content parses; privacy lint; Notes fixture.
+  and 181 days; schema rejections; real content parses; privacy lint; Notes fixture; day planner route, day-length cut-off and each must-include edge case.
 - Playwright: chips ↔ map sync and live estimate; want-to-go persistence; pin ↔ list highlight; filter URL
   round-trip; AI kill-switch fallback.
 - Build: static place pages; JS, font and image budgets; Lighthouse CI; CI greps `.next/static` for `sk-ant-` and
@@ -175,7 +197,8 @@ sourced cost tiers for Bangkok and Andaman; season calendar; a Reels shot list f
 ## Risks
 
 1. Private data reaching public git history → column allowlist, CSV path from env, privacy lint in hook and CI.
-2. Pre-trip scope creep → strict order; the map (M6) is last, so it slips first.
+2. Pre-trip scope creep → strict order; the slice is ~4.5 hours over budget, so the M8 planner UI slips first and
+   `planDay` with its tests stays.
 3. Haiku 4.5 retirement "not sooner than 15 Oct 2026" → one `MODEL_ID`, a 10-prompt check before any swap,
    re-check status at the AI foundation milestone.
 4. AI cost and abuse → Turnstile, daily quota, $5 cap, kill switch tested in e2e, `max_tokens` caps.
@@ -186,8 +209,8 @@ sourced cost tiers for Bangkok and Andaman; season calendar; a Reels shot list f
 
 - Pattaya and more regions.
 - Stays top 10 by group, family and solo.
-- ₹ trip-cost calculator.
-- Itinerary planner fed by want-to-go.
+- Trip-cost calculator in the visitor's currency.
+- Multi-day itinerary fed by want-to-go, built on the day planner.
 - Paid plan review (₹299–499) with login.
 - Google Maps export for paid users: Follow links to maintained shared lists, plus per-place save links (Google
   has no Saved-lists API).

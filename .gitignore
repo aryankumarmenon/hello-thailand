@@ -47,3 +47,6 @@ next-env.d.ts
 
 # privacy-lint denylist (never committed; CI reads it from a secret)
 .privacy-denylist*
+
+# personal Claude Code notes: private research repo path and source map
+CLAUDE.local.md

@@ -16,6 +16,9 @@ it, and what is blocked.
 - `docs/RESEARCH.md` — competitors, UX references, service terms and limits, costs, content gaps, with
   sources. Read when choosing a service, library or UI pattern, or when writing content.
 - `docs/CONTEXT.md` — glossary. Use its terms in code, content and docs.
+- Source research lives in a separate private repo. On a machine that has it, `CLAUDE.local.md` (gitignored)
+  gives its local path and which research file answers which need. Read those files on demand; never copy
+  the path, the repo name or research text into this public repo.
 
 ## Rules
 

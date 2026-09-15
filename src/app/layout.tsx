@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Hello Thailand",
-  description: "A verified Thailand trip planner for Indian travellers.",
+  description: "A verified Thailand trip planner.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
