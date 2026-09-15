@@ -113,7 +113,7 @@ show the last rate and "rates delayed".
 
 ### Hosting
 
-Vercel Hobby at `hello-thailand.vercel.app`. Code stays portable to Cloudflare Workers through OpenNext: Node
+Vercel Hobby at `hello-thailand-planner.vercel.app` (`hello-thailand.vercel.app` belongs to an unrelated site). Code stays portable to Cloudflare Workers through OpenNext: Node
 runtime only, no Vercel-only SDKs, images `unoptimized`.
 
 ## Architecture

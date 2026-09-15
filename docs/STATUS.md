@@ -10,14 +10,14 @@ Last updated: 2026-09-16
 Scope set on 15 Sep 2026: ~29.5 hours of code by Aryan alone against a ~25-hour budget, so the M8 planner UI slips
 first (see `DECISIONS.md`). Rows are in build order.
 
-| #       | Milestone                                            | Owner | State                                                                                              |
-| ------- | ---------------------------------------------------- | ----- | -------------------------------------------------------------------------------------------------- |
-| M0      | Scaffold                                             | Aryan | Pushed; CI `check` green on `main`. Only the Vercel preview deploy is left, see below              |
-| M1      | Data pipeline with planner fields and geocoding      | Aryan | Not started. Only Aryan can run the CSV import: the source CSV is private and stays on his machine |
-| M2-lite | Tokens and the components M4 and M8 use, light theme | Aryan | Not started                                                                                        |
-| M4      | Bangkok top-10 list and place pages                  | Aryan | Not started                                                                                        |
-| M8      | Bangkok day planner with must-include places         | Aryan | Not started                                                                                        |
-| M7-lite | Ship: production deploy, manual Lighthouse run       | Aryan | Not started                                                                                        |
+| #       | Milestone                                            | Owner | State                                                                                                                                        |
+| ------- | ---------------------------------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| M0      | Scaffold                                             | Aryan | CI `check` green; production live at `hello-thailand-planner.vercel.app` (16 Sep 2026). The preview deploy is checked on the M0 pull request |
+| M1      | Data pipeline with planner fields and geocoding      | Aryan | Not started. Only Aryan can run the CSV import: the source CSV is private and stays on his machine                                           |
+| M2-lite | Tokens and the components M4 and M8 use, light theme | Aryan | Not started                                                                                                                                  |
+| M4      | Bangkok top-10 list and place pages                  | Aryan | Not started                                                                                                                                  |
+| M8      | Bangkok day planner with must-include places         | Aryan | Not started                                                                                                                                  |
+| M7-lite | Ship: production deploy, manual Lighthouse run       | Aryan | Not started                                                                                                                                  |
 
 Moved after the trip: landing (region map and chips), dark mode, trip inputs and estimate card, M5 photos, M6 Bangkok map, e2e and
 Lighthouse CI jobs.
@@ -34,6 +34,9 @@ Moved after the trip, with the estimate card: cost tiers, season calendar, Andam
 
 ## Blockers
 
-- **Vercel:** not linked. The Vercel connector returns no teams, so linking the GitHub repo needs either an import
-  at vercel.com/new or a reconnected connector.
-- **Collaborator access:** add the second person as a collaborator on the GitHub repo and the Vercel project.
+- **Vercel connector:** it cannot see the `hello-thailand` team, so Claude cannot read build logs or deployments.
+  Reconnect it in claude.ai with access to that team.
+- **Collaborator access:** add the second person as a collaborator on the GitHub repo. Vercel Hobby has no team
+  members, so they review preview deployments through Shareable Links.
+- **Product name:** an unrelated visa agency already uses "HelloThailand" (`hello-thailand.vercel.app`). Decide the
+  name before Reels and Reddit links go out on the trip; see `docs/DECISIONS.md`.
