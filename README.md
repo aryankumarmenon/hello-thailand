@@ -1,6 +1,6 @@
 # Hello Thailand
 
-A Thailand trip planner for Indian travellers: pick regions on a map, get a rough per-day cost estimate,
+A Thailand trip planner: pick regions on a map, get a rough per-day cost estimate,
 and explore verified places with dated prices. Pet project, non-commercial.
 
 ## Stack
