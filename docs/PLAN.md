@@ -132,7 +132,7 @@ src/
 content/      places/<city>/*.json cities/ cost-tiers/ vendors/ guides/*.mdx overrides/geocode.json
 scripts/      import-csv geocode photos/ privacy-lint validate-content stale-prices
 tests/        unit/ e2e/ fixtures/ lighthouse/
-docs/         PLAN STATUS DECISIONS RESEARCH CONTEXT adr/
+docs/         PLAN STATUS DECISIONS RESEARCH CONTEXT WORKFLOW adr/
 ```
 
 - Schemas in `src/domain/schemas` are the single source of truth for content, loaders and AI structured output.

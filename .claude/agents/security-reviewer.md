@@ -63,7 +63,7 @@ report; you never edit files, commit or push.
 ### Scripts (`scripts/`)
 
 - A file path from an environment variable is resolved and checked before a read or write.
-- Scripts fetch only known hosts (Nominatim, Wikimedia Commons, Openverse). No URL comes from content or CSV
+- Scripts fetch only known hosts (Nominatim, Wikimedia Commons, Openverse, Unsplash, Pexels). No URL comes from content or CSV
   data.
 - Nominatim calls send a User-Agent and stay at or below 1 request per second.
 

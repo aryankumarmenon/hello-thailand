@@ -53,7 +53,7 @@ every sentence is in the owners' own words. You report; you never edit files, co
 ### Day planner fields
 
 - `neighbourhood` is an area travellers use (glossary sense) and is spelled the same in every record.
-- `popularity` is 1–5 with `checkedOn`. Time needed is in minutes and plausible for the kind of place.
+- `popularity` is an editorial score from 1 to 5. Time needed is in minutes and plausible for the kind of place.
   Opening hours have a source or are unverified.
 - Coordinates fall inside the city. Flag a pin that geocoded to the wrong place.
 

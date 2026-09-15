@@ -24,7 +24,8 @@ How a change gets from a branch into `main`: branches, commits, rebasing, pull r
   Without `--no-track`, the new branch tracks `main`: `git pull` then pulls `main` into it, and `git status`
   compares it with the wrong branch.
 
-- Delete the branch after it is merged.
+- GitHub deletes the remote branch when its pull request merges. Delete your local branch yourself, as
+  "Merging a pull request" shows.
 
 ## Commits
 
@@ -64,11 +65,12 @@ Use a stack when a branch needs work that is not merged yet. Example: M4 needs t
 
 1. Start the second branch from the first: `git switch --no-track -c m4-bangkok-pages m2-lite-components`.
 2. Open its pull request with the first branch as the base.
-3. After the first branch merges, move the second branch onto `main`:
+3. After the first branch merges, and before you delete it locally, move the second branch onto `main`:
    - The first branch was squash-merged: `git rebase --onto origin/main m2-lite-components m4-bangkok-pages`.
      A plain rebase would try to apply the first branch's commits again and conflict.
    - The first branch was merged another way: `git rebase origin/main`.
-4. Change the pull request base to `main`, then push with `--force-with-lease`.
+4. Check that the pull request base is now `main` (GitHub changes it when it deletes the merged branch), then
+   push with `--force-with-lease`.
 
 Keep a stack to two branches.
 
@@ -81,15 +83,15 @@ Keep a stack to two branches.
 
 ### Reviews before you open or update a pull request
 
-| The change touches                                                                              | Run                                                                      |
-| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| Any code                                                                                        | `/code-review` for bugs                                                  |
-| `scripts/`, `src/server/`, `src/app/api/`, `src/env/`, `.github/`, `.gitignore`, `package.json` | `security-reviewer` agent; `/security-review` for a broader generic pass |
-| `content/`, or a script that writes content                                                     | `content-reviewer` agent                                                 |
-| New domain logic, or the test plan for a milestone                                              | `/engineering:testing-strategy` (engineering plugin)                     |
-| A new ADR                                                                                       | `/engineering:architecture` (engineering plugin)                         |
-| M7 ship or any production deploy                                                                | `/engineering:deploy-checklist` (engineering plugin)                     |
-| Every pull request, as the last step                                                            | `pr-readiness` agent                                                     |
+| The change touches                                                                                                                  | Run                                                                                 |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Any code                                                                                                                            | `/code-review` (built into Claude Code) for bugs                                    |
+| `scripts/`, `src/server/`, `src/app/api/`, `src/env/`, `.github/`, `.gitignore`, `package.json`, `pnpm-lock.yaml`, `next.config.ts` | `security-reviewer` agent; `/security-review` (built in) for a broader generic pass |
+| `content/`, or a script that writes content                                                                                         | `content-reviewer` agent                                                            |
+| New domain logic, or the test plan for a milestone                                                                                  | `/engineering:testing-strategy` (engineering plugin)                                |
+| A new ADR                                                                                                                           | `/engineering:architecture` (engineering plugin)                                    |
+| M7 ship or any production deploy                                                                                                    | `/engineering:deploy-checklist` (engineering plugin)                                |
+| Every pull request, as the last step                                                                                                | `pr-readiness` agent                                                                |
 
 - Run an agent with `@agent-security-reviewer`, or ask Claude to "use the security-reviewer agent on this
   branch".
@@ -103,7 +105,7 @@ Keep a stack to two branches.
   title, so its history reads like a changelog and one `git revert` undoes a milestone.
 - The step-by-step commits stay on the pull request page on GitHub. Rebase the branch on `origin/main` before
   you merge, so the squashed commit is the exact tree CI tested.
-- After the merge, run `git switch main && git pull --ff-only && git branch -D <branch>`. A squashed branch is
+- After the merge, run `git switch main && git pull --ff-only && git fetch --prune && git branch -D <branch>`. A squashed branch is
   not an ancestor of `main`, so `git branch -d` refuses to delete it.
 
 ## When something goes wrong
