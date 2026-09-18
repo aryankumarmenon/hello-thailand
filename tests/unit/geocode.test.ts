@@ -3,6 +3,7 @@ import { describe, expect, it, vi, type Mock } from "vitest";
 import {
   buildQueries,
   geocodePlaces,
+  looksLikeTheSamePlace,
   nominatimUrl,
   pickResult,
   type GeocodeCache,
@@ -107,6 +108,30 @@ describe("pickResult", () => {
   });
 });
 
+describe("looksLikeTheSamePlace", () => {
+  it("accepts a match that shares the distinctive word", () => {
+    expect(looksLikeTheSamePlace("Wat Pho", "Wat Pho, Maha Rat Road, Bangkok")).toBe(true);
+  });
+
+  // The real miss: asked for a rooftop bar, OSM returned a concert hall 9 km away.
+  it("rejects a match that is a different thing entirely", () => {
+    expect(
+      looksLikeTheSamePlace("Roof at Sala Rattanakosin", "Thailand Cultural Centre, Huai Khwang"),
+    ).toBe(false);
+  });
+
+  it("ignores words too common to prove anything", () => {
+    expect(looksLikeTheSamePlace("Some Bar", "Another Bar, Bangkok, Thailand")).toBe(false);
+  });
+
+  it("is honest about what it cannot catch", () => {
+    // Same name, wrong side of the city. Only the recorded `matched` string shows this.
+    expect(looksLikeTheSamePlace("Moon Bar (Banyan Tree)", "Moon Bar - Rooftop, Chatuchak")).toBe(
+      true,
+    );
+  });
+});
+
 describe("geocodePlaces", () => {
   const run = async (
     places: Place[],
@@ -129,6 +154,8 @@ describe("geocodePlaces", () => {
   it("asks Nominatim for a place with no coordinates", async () => {
     const { places, report, lookup } = await run([place()]);
     expect(places[0]?.coordinates).toEqual({ lat: 13.7463456, lng: 100.4927381 });
+    expect(places[0]?.geocode?.matched).toBe("Wat Pho, Bangkok, Thailand");
+    expect(places[0]?.geocode?.query).toBe("Wat Pho, Bangkok, Thailand");
     expect(report.located).toEqual([{ id: "wat-pho", from: "nominatim" }]);
     expect(lookup).toHaveBeenCalledTimes(1);
   });
@@ -148,6 +175,7 @@ describe("geocodePlaces", () => {
         lat: 13.7463456,
         lng: 100.4927381,
         matched: "Wat Pho",
+        query: "Wat Pho, Bangkok, Thailand",
         fetchedOn: "2026-09-01",
       },
     };
@@ -193,6 +221,17 @@ describe("geocodePlaces", () => {
     expect(report.located).toEqual([]);
     expect(report.problems[0]).toContain("outside Thailand");
     expect(report.problems[0]).toContain("Lake Bled");
+  });
+
+  it("refuses a match that shares no word with the place name", async () => {
+    const lookup = vi.fn<Lookup>(async () => [
+      { lat: "13.7667", lon: "100.5694", display_name: "Thailand Cultural Centre, Huai Khwang" },
+    ]);
+    const { places, report } = await run([place({ name: "Roof at Sala Rattanakosin" })], {
+      lookup,
+    });
+    expect(places[0]?.coordinates).toBeUndefined();
+    expect(report.problems[0]).toContain("shares no word");
   });
 
   it("reports a network failure and leaves the place alone", async () => {

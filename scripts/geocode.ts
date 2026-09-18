@@ -28,7 +28,7 @@ const OVERRIDES_PATH = path.join(CONTENT_ROOT, "overrides", "geocode.json");
 
 /** One cached answer. `found: false` is cached too, so a hopeless query is asked once. */
 export type CacheEntry =
-  | { found: true; lat: number; lng: number; matched: string; fetchedOn: string }
+  | { found: true; lat: number; lng: number; matched: string; query: string; fetchedOn: string }
   | { found: false; fetchedOn: string };
 
 export type GeocodeCache = Record<string, CacheEntry>;
@@ -38,7 +38,13 @@ export type GeocodeCache = Record<string, CacheEntry>;
  */
 export const GeocodeOverrides = z.record(
   z.string(),
-  z.strictObject({ lat: z.number(), lng: z.number(), note: z.string().min(1) }),
+  z.union([
+    z.strictObject({ lat: z.number(), lng: z.number(), note: z.string().min(1) }),
+    // OSM's answer for this place is wrong and no better query exists. Recording that
+    // keeps the wrong pin from being re-accepted on the next run; the place stays
+    // unpinned until someone reads the coordinates off a map.
+    z.strictObject({ skip: z.literal(true), note: z.string().min(1) }),
+  ]),
 );
 export type GeocodeOverrides = z.infer<typeof GeocodeOverrides>;
 
@@ -85,6 +91,9 @@ export function buildQueries(place: Pick<Place, "name" | "address" | "city">): s
     cleanName(place.name) + suffix,
     alias ? cleanName(alias) + suffix : undefined,
     expandAbbreviations(place.address.trim()),
+    // The address as written. The expansion above usually helps, but not always: OSM
+    // knows some streets by the abbreviated name the CSV already uses.
+    place.address.trim(),
   ].filter((query): query is string => typeof query === "string" && query.length > suffix.length);
 
   return [...new Set(candidates)];
@@ -103,6 +112,65 @@ export function pickResult(
   if (!Number.isFinite(lat) || !Number.isFinite(lng)) return undefined;
   const matched = typeof record["display_name"] === "string" ? record["display_name"] : "";
   return { lat, lng, matched };
+}
+
+/**
+ * Words too common in Thai addresses to prove that a match is the right venue.
+ */
+const WEAK_TOKENS = new Set([
+  "bangkok",
+  "thailand",
+  "phuket",
+  "krabi",
+  "samut",
+  "prakan",
+  "nonthaburi",
+  "road",
+  "soi",
+  "thanon",
+  "street",
+  "lane",
+  "district",
+  "subdistrict",
+  "province",
+  "the",
+  "and",
+  "for",
+  "bar",
+  "cafe",
+  "restaurant",
+  "hotel",
+]);
+
+function meaningfulTokens(text: string): Set<string> {
+  return new Set(
+    text
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, " ")
+      .split(" ")
+      .filter((token) => token.length > 2 && !WEAK_TOKENS.has(token)),
+  );
+}
+
+/**
+ * Does the matched result look like the place we asked for?
+ *
+ * Nominatim always answers with its best guess, and `limit=1` then commits that guess.
+ * Asked for "Roof at Sala Rattanakosin" it returned the Thailand Cultural Centre, 9 km
+ * away, and nothing downstream noticed. Requiring one meaningful word in common is a
+ * weak test, but it catches the answers that are a different thing entirely.
+ *
+ * It does NOT catch a match with the right name in the wrong place - a second bar also
+ * called Moon Bar, for example. That is what the recorded `matched` string is for.
+ */
+export function looksLikeTheSamePlace(name: string, matched: string): boolean {
+  const wanted = meaningfulTokens(name);
+  if (wanted.size === 0) return true;
+  const got = meaningfulTokens(matched);
+  for (const token of wanted) {
+    if (got.has(token)) return true;
+  }
+  return false;
 }
 
 export function nominatimUrl(query: string): string {
@@ -150,21 +218,49 @@ export async function geocodePlaces(
   const out: Place[] = [];
 
   for (const place of places) {
-    if (place.coordinates) {
-      out.push(place);
+    // Overrides are checked before anything else, including coordinates the place already
+    // has. An override exists precisely because a previous run pinned the wrong venue, so
+    // it must be able to correct a committed pin, not only fill an empty one.
+    const override = overrides[place.id];
+    if (override && "skip" in override) {
+      const { coordinates: _dropped, geocode: _evidence, ...unpinned } = place;
+      report.problems.push(`${place.id}: skipped by override - ${override.note}`);
+      out.push(unpinned);
       continue;
     }
-
-    const override = overrides[place.id];
     if (override) {
       const checked = Coordinates.safeParse({ lat: override.lat, lng: override.lng });
       if (checked.success) {
-        out.push({ ...place, coordinates: checked.data });
+        const { geocode: _evidence, ...rest } = place;
+        out.push({ ...rest, coordinates: checked.data });
         report.located.push({ id: place.id, from: "override" });
       } else {
         report.problems.push(`${place.id}: override is outside Thailand`);
         out.push(place);
       }
+      continue;
+    }
+
+    if (place.coordinates) {
+      // Already pinned, but possibly before the evidence was recorded. Fill it from the
+      // cache if we can; never go to the network for a place that already has a pin.
+      if (!place.geocode) {
+        const cached = buildQueries(place)
+          .map((query) => ({ query, entry: cache[query] }))
+          .find((hit) => hit.entry?.found);
+        if (cached?.entry?.found) {
+          out.push({
+            ...place,
+            geocode: {
+              query: cached.entry.query ?? cached.query,
+              matched: cached.entry.matched,
+              fetchedOn: cached.entry.fetchedOn,
+            },
+          });
+          continue;
+        }
+      }
+      out.push(place);
       continue;
     }
 
@@ -177,7 +273,7 @@ export async function geocodePlaces(
       const cached = cache[query];
       if (cached) {
         if (cached.found) {
-          entry = cached;
+          entry = { ...cached, query: cached.query ?? query };
           from = "cache";
           break;
         }
@@ -188,7 +284,7 @@ export async function geocodePlaces(
       try {
         const found = pickResult(await lookup(query));
         const fresh: CacheEntry = found
-          ? { found: true, ...found, fetchedOn: today }
+          ? { found: true, ...found, query, fetchedOn: today }
           : { found: false, fetchedOn: today };
         cache[query] = fresh;
         if (fresh.found) {
@@ -227,7 +323,19 @@ export async function geocodePlaces(
       continue;
     }
 
-    out.push({ ...place, coordinates: checked.data });
+    if (!looksLikeTheSamePlace(place.name, entry.matched)) {
+      report.problems.push(
+        `${place.id}: matched ${JSON.stringify(entry.matched)}, which shares no word with the place name. Needs an override.`,
+      );
+      out.push(place);
+      continue;
+    }
+
+    out.push({
+      ...place,
+      coordinates: checked.data,
+      geocode: { query: entry.query, matched: entry.matched, fetchedOn: entry.fetchedOn },
+    });
     report.located.push({ id: place.id, from });
   }
 
@@ -293,7 +401,8 @@ async function main(): Promise<void> {
 
   // A place OSM cannot find needs a person to read the coordinates off a map, so print
   // the exact lines to paste into content/overrides/geocode.json.
-  const unresolved = places.filter((place) => !place.coordinates);
+  // A place with a skip override is already accounted for; it needs a map, not a stub.
+  const unresolved = places.filter((place) => !place.coordinates && !(place.id in overrides));
   if (unresolved.length > 0) {
     console.log(
       `\n${unresolved.length} place(s) need an override in content/overrides/geocode.json:`,
@@ -317,7 +426,9 @@ async function main(): Promise<void> {
 
   for (const [index, place] of places.entries()) {
     const entry = entries[index];
-    if (!entry || !place.coordinates || entry.place.coordinates) continue;
+    if (!entry) continue;
+    // Write whenever the record changed: a new pin, a corrected pin, or a pin removed.
+    if (JSON.stringify(place) === JSON.stringify(entry.place)) continue;
     await writeJson(entry.file, place);
   }
   console.log(`cache: ${Object.keys(cache).length} queries`);
