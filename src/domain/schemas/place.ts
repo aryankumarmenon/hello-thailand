@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { Price, UNVERIFIED_PRICE } from "./price";
+import { CheckedOn, Price, UNVERIFIED_PRICE } from "./price";
 
 /**
  * One thing a traveller can visit, eat at or do (docs/CONTEXT.md).
@@ -93,8 +93,10 @@ export const TimeOfDay = z
  */
 const OpenOn = z
   .strictObject({ day: Weekday, opens: TimeOfDay, closes: TimeOfDay })
-  .refine((entry) => entry.opens !== entry.closes, {
-    message: "opens and closes must differ",
+  // "00:00" to "00:00" is the one equal pair that means something: open all day. Any
+  // other equal pair is a typo, since it would describe a zero-length opening.
+  .refine((entry) => entry.opens !== entry.closes || entry.opens === "00:00", {
+    message: 'opens and closes must differ, unless both are "00:00" for a 24-hour venue',
     path: ["closes"],
   });
 
@@ -111,14 +113,43 @@ const ClosedOn = z.strictObject({ day: Weekday, closed: z.literal(true) });
 export const OpeningHoursEntry = z.union([OpenOn, ClosedOn]);
 export type OpeningHoursEntry = z.infer<typeof OpeningHoursEntry>;
 
-/** A day marked closed cannot also carry an opening range. */
-export const OpeningHours = z.array(OpeningHoursEntry).refine(
-  (entries) => {
-    const shut = new Set(entries.filter((e) => "closed" in e).map((e) => e.day));
-    return !entries.some((e) => !("closed" in e) && shut.has(e.day));
-  },
-  { message: "a day marked closed must not also have opening hours" },
-);
+/** Minutes from midnight, so two ranges on one day can be compared. */
+function minutes(time: string): number {
+  const [h = "0", m = "0"] = time.split(":");
+  return Number(h) * 60 + Number(m);
+}
+
+export const OpeningHours = z
+  .array(OpeningHoursEntry)
+  .refine(
+    (entries) => {
+      const shut = new Set(entries.filter((e) => "closed" in e).map((e) => e.day));
+      return !entries.some((e) => !("closed" in e) && shut.has(e.day));
+    },
+    { message: "a day marked closed must not also have opening hours" },
+  )
+  // Two overlapping ranges give the planner two answers to "is it open at 11:00?".
+  .refine(
+    (entries) => {
+      for (const day of WEEKDAYS) {
+        const ranges = entries
+          .filter((e): e is { day: Weekday; opens: string; closes: string } => !("closed" in e))
+          .filter((e) => e.day === day)
+          .map((e) => {
+            const from = minutes(e.opens);
+            const to = minutes(e.closes);
+            // A range past midnight ends the next day, so measure it as such.
+            return { from, to: to <= from ? to + 24 * 60 : to };
+          })
+          .sort((a, b) => a.from - b.from);
+        for (let i = 1; i < ranges.length; i += 1) {
+          if (ranges[i]!.from < ranges[i - 1]!.to) return false;
+        }
+      }
+      return true;
+    },
+    { message: "two opening ranges on the same day must not overlap" },
+  );
 
 export const Place = z.strictObject({
   // --- core: from the CSV column allowlist (ADR 0003) ---
@@ -133,14 +164,30 @@ export const Place = z.strictObject({
 
   // --- filled by the geocode step ---
   coordinates: Coordinates.optional(),
+  /**
+   * What the geocoder matched, kept so a reviewer can see whether the pin is the right
+   * venue. Without it the evidence lives only in the cache, keyed by a query string
+   * nobody will look up, and a confident wrong pin reads exactly like a right one.
+   * Absent when the coordinates came from a hand-set override.
+   */
+  geocode: z
+    .strictObject({ query: z.string().min(1), matched: z.string().min(1), fetchedOn: CheckedOn })
+    .optional(),
 
   // --- editorial: added by hand, absent until the content track reaches this place ---
-  /** Travellers' area name, such as Rattanakosin. Groups a day plan. */
-  neighbourhood: z.string().min(1).optional(),
+  /**
+   * Travellers' area, as a slug such as `rattanakosin`. The day planner groups and
+   * filters by exact equality, so " Silom " and "silom" must not both be writable.
+   * A closed enum comes with M4, once the real Bangkok list exists.
+   */
+  neighbourhood: Slug.optional(),
   /** Editorial score, 1 to 5, for how worth visiting a place is. */
   popularity: z.int().min(1).max(5).optional(),
-  /** How long a visit takes, in minutes. The day planner spends this at a stop. */
-  timeNeededMinutes: z.int().positive().optional(),
+  /**
+   * How long a visit takes, in minutes. The day planner spends this at a stop, so a
+   * value longer than a day would silently consume every plan. Capped at 12 hours.
+   */
+  timeNeededMinutes: z.int().min(5).max(720).optional(),
   openingHours: OpeningHours.optional(),
   /** Own words, never guidebook text. */
   summary: z.string().min(1).optional(),

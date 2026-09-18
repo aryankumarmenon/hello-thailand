@@ -192,7 +192,7 @@ describe("mergeWithExisting", () => {
       ...imported,
       address: "an older address",
       coordinates: { lat: 13.7465, lng: 100.4927 },
-      neighbourhood: "Rattanakosin",
+      neighbourhood: "rattanakosin",
       popularity: 5,
       timeNeededMinutes: 90,
       summary: "The reclining Buddha.",
@@ -210,7 +210,7 @@ describe("mergeWithExisting", () => {
     expect(merged.address).toBe(imported.address);
     // Everything a person wrote or the geocoder found survives.
     expect(merged.coordinates).toEqual(existing.coordinates);
-    expect(merged.neighbourhood).toBe("Rattanakosin");
+    expect(merged.neighbourhood).toBe("rattanakosin");
     expect(merged.popularity).toBe(5);
     expect(merged.summary).toBe("The reclining Buddha.");
     expect(merged.price).toEqual(existing.price);

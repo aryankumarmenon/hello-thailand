@@ -113,7 +113,9 @@ export function parseAllowedRows(csv: string): AllowedRow[] {
     // Read only the allowlisted positions. Notes sits beyond them and is never touched.
     const allowed: AllowedRow = {};
     ALLOWED_COLUMNS.forEach((name, column) => {
-      allowed[name] = row[column];
+      const value = row[column];
+      // exactOptionalPropertyTypes: an optional key must be absent, not set to undefined.
+      if (value !== undefined) allowed[name] = value;
     });
     return allowed;
   });

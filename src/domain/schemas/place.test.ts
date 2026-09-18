@@ -25,7 +25,7 @@ describe("Place", () => {
     const full = {
       ...imported,
       coordinates: { lat: 13.7465, lng: 100.4927 },
-      neighbourhood: "Rattanakosin",
+      neighbourhood: "rattanakosin",
       popularity: 5,
       timeNeededMinutes: 90,
       summary: "The reclining Buddha, and the country's oldest massage school.",
@@ -120,6 +120,37 @@ describe("Place", () => {
       expect(hours({ day: "mon", opens: "09:00", closes: "09:00" }).success).toBe(false);
     });
 
+    it('accepts "00:00" to "00:00" as a 24-hour venue', () => {
+      expect(hours({ day: "mon", opens: "00:00", closes: "00:00" }).success).toBe(true);
+    });
+
+    it("rejects two overlapping ranges on one day", () => {
+      expect(
+        hours(
+          { day: "mon", opens: "09:00", closes: "18:00" },
+          { day: "mon", opens: "10:00", closes: "12:00" },
+        ).success,
+      ).toBe(false);
+    });
+
+    it("still accepts two ranges that only touch", () => {
+      expect(
+        hours(
+          { day: "mon", opens: "11:00", closes: "14:00" },
+          { day: "mon", opens: "14:00", closes: "22:00" },
+        ).success,
+      ).toBe(true);
+    });
+
+    it("does not confuse a past-midnight range with an overlap", () => {
+      expect(
+        hours(
+          { day: "sat", opens: "11:00", closes: "15:00" },
+          { day: "sat", opens: "21:00", closes: "02:00" },
+        ).success,
+      ).toBe(true);
+    });
+
     it("rejects a time that is not 24-hour HH:MM", () => {
       expect(hours({ day: "mon", opens: "9:00", closes: "17:00" }).success).toBe(false);
       expect(hours({ day: "mon", opens: "08:00", closes: "6pm" }).success).toBe(false);
@@ -133,6 +164,30 @@ describe("Place", () => {
     it("rejects an entry with no day", () => {
       expect(hours({ opens: "08:00", closes: "18:00" }).success).toBe(false);
     });
+  });
+
+  it("requires a neighbourhood to be a slug, so the planner can compare by equality", () => {
+    expect(Place.safeParse({ ...imported, neighbourhood: "rattanakosin" }).success).toBe(true);
+    expect(Place.safeParse({ ...imported, neighbourhood: "  Silom " }).success).toBe(false);
+    expect(Place.safeParse({ ...imported, neighbourhood: "Silom" }).success).toBe(false);
+  });
+
+  it("keeps time needed inside a plausible visit", () => {
+    expect(Place.safeParse({ ...imported, timeNeededMinutes: 90 }).success).toBe(true);
+    expect(Place.safeParse({ ...imported, timeNeededMinutes: 1 }).success).toBe(false);
+    expect(Place.safeParse({ ...imported, timeNeededMinutes: 100_000 }).success).toBe(false);
+  });
+
+  it("records what the geocoder matched", () => {
+    const geocode = {
+      query: "Wat Pho, Bangkok, Thailand",
+      matched: "Wat Pho, Maha Rat Road, Bangkok",
+      fetchedOn: "2026-09-18",
+    };
+    expect(Place.safeParse({ ...imported, geocode }).success).toBe(true);
+    expect(
+      Place.safeParse({ ...imported, geocode: { ...geocode, fetchedOn: "2099-01-01" } }).success,
+    ).toBe(false);
   });
 
   it("rejects a price number with no source", () => {

@@ -60,6 +60,20 @@ describe("Price", () => {
     expect(Price.safeParse({ status: "pending" }).success).toBe(false);
   });
 
+  it("rejects a source that is not public https", () => {
+    // ADR 0003: the private research repo is the one source that must never justify a number.
+    expect(Price.safeParse({ ...verified, source: "file:///Users/x/FACTS.md" }).success).toBe(
+      false,
+    );
+    expect(Price.safeParse({ ...verified, source: "http://localhost:3000/x" }).success).toBe(false);
+    expect(Price.safeParse({ ...verified, source: "http://example.org/x" }).success).toBe(false);
+    expect(Price.safeParse({ ...verified, source: "https://example.org/x" }).success).toBe(true);
+  });
+
+  it("rejects a checkedOn in the future", () => {
+    expect(Price.safeParse({ ...verified, checkedOn: "2099-12-31" }).success).toBe(false);
+  });
+
   it("rejects an empty label", () => {
     expect(Price.safeParse({ ...verified, label: "" }).success).toBe(false);
   });
