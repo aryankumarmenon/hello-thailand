@@ -101,6 +101,15 @@ function main(): void {
       process.exitCode = 1;
       return;
     }
+    // The hook is the gate that runs before every commit, so a skip there must stop the
+    // commit rather than print a warning. A warning is what let a whole milestone be
+    // committed with this check switched off: it printed before every commit and read as
+    // noise. `git commit --no-verify` is the deliberate way past it.
+    if (staged) {
+      console.error(`${message} Refusing to pass the pre-commit hook with the check switched off.`);
+      process.exitCode = 1;
+      return;
+    }
     console.warn(`${message} Skipping.`);
     return;
   }

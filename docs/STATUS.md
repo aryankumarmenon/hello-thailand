@@ -68,8 +68,10 @@ blocker and several real defects, all now fixed:
 
 ## Blockers
 
-- **Privacy denylist is empty:** `.privacy-denylist` has only its instructions, so the pre-commit hook warns and
-  skips. Add the real strings, and set the same list as the `PRIVACY_DENYLIST` repository secret so CI runs it.
+- **Privacy denylist is empty:** `.privacy-denylist` has only its instructions, so the pre-commit hook now
+  **refuses to pass** rather than warning and skipping: a check that announces it is not running is what let
+  a whole milestone be committed unprotected. Add the real strings, and set the same list as the
+  `PRIVACY_DENYLIST` repository secret so CI runs it. Until then, committing needs `git commit --no-verify`.
 - **Three Bangkok places have no coordinates:** `likhit-kai-yang`, `moon-bar-banyan-tree` and
   `roof-at-sala-rattanakosin`. OpenStreetMap has no record of the first two and answers wrongly for the third;
   each carries a `skip` override saying so. Read the coordinates off a map and replace the skip with a pin.
