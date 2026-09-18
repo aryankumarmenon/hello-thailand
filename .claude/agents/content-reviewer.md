@@ -63,6 +63,14 @@ every sentence is in the owners' own words. You report; you never edit files, co
   without a public source.
 - A vendor has a licence or certification number and `checkedOn`.
 
+### Test data and fixtures
+
+Check every fixture, sample and example the branch adds or changes, under `tests/`, in test files and in
+script comments. Each value MUST be invented. A real venue name, a real street address, a booking reference
+or a person's name is a finding even in a test, and doubly so in the fixtures for the privacy tests, which
+have been written from the private CSV before now. The column allowlist and the privacy lint are both blind
+to a file typed by hand, so this check is the only one that catches it.
+
 ## Report
 
 - Findings grouped by file, most severe first. Blocker: copied text, personal data, an unlicensed photo, or an
