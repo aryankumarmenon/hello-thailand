@@ -11,5 +11,10 @@
   },
   "price": {
     "status": "unverified"
+  },
+  "geocode": {
+    "query": "Chatuchak Weekend Market, Bangkok, Thailand",
+    "matched": "Chatuchak Market, Soi 62, Section 6, Chatuchak Subdistrict, Chatuchak District, Bangkok, 10900, Thailand",
+    "fetchedOn": "2026-09-18"
   }
 }

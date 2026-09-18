@@ -7,5 +7,9 @@
   "source": "editorial",
   "price": {
     "status": "unverified"
+  },
+  "coordinates": {
+    "lat": 13.726618,
+    "lng": 100.5761862
   }
 }

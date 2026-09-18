@@ -11,5 +11,10 @@
   },
   "price": {
     "status": "unverified"
+  },
+  "geocode": {
+    "query": "Ayutthaya Historical Park, Thailand",
+    "matched": "Ayutthaya Historical Park, Pratu Chai Subdistrict, Phra Nakhon Si Ayutthaya City Municipality, Phra Nakhon Si Ayutthaya District, Phra Nakhon Si Ayutthaya Province, 13000, Thailand",
+    "fetchedOn": "2026-09-18"
   }
 }

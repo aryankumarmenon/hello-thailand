@@ -11,5 +11,10 @@
   },
   "price": {
     "status": "unverified"
+  },
+  "geocode": {
+    "query": "Arena 10, Bangkok, Thailand",
+    "matched": "Arena 10, Khlong Tan Nuea Subdistrict, Vadhana District, Bangkok, Thailand",
+    "fetchedOn": "2026-09-18"
   }
 }

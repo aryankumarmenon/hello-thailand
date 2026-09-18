@@ -11,5 +11,10 @@
   },
   "price": {
     "status": "unverified"
+  },
+  "geocode": {
+    "query": "Wat Suthat, Bangkok, Thailand",
+    "matched": "Wat Suthat, Ti Thong Road, Trok Wisut Community, Wat Ratchabophit Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
   }
 }

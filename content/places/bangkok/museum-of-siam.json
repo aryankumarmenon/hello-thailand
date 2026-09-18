@@ -11,5 +11,10 @@
   },
   "price": {
     "status": "unverified"
+  },
+  "geocode": {
+    "query": "Museum of Siam, Bangkok, Thailand",
+    "matched": "Museum of Siam, Soi Setthakan, Tha Tien Community, Phra Borom Maha Ratchawang Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
   }
 }

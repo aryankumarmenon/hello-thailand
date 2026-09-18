@@ -11,5 +11,10 @@
   },
   "price": {
     "status": "unverified"
+  },
+  "geocode": {
+    "query": "Ratchadamnoen Stadium, Bangkok, Thailand",
+    "matched": "Rajadamnern Stadium, Phaniang Road, Supamit Community 2, Wat Sommanat Subdistrict, Pom Prap Sattru Phai District, Bangkok, 10100, Thailand",
+    "fetchedOn": "2026-09-18"
   }
 }

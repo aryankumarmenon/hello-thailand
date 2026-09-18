@@ -11,5 +11,10 @@
   },
   "price": {
     "status": "unverified"
+  },
+  "geocode": {
+    "query": "Jim Thompson House, Bangkok, Thailand",
+    "matched": "Jim Thompson House, 6, Soi Kasem San 2, Wang Mai Subdistrict, Pathum Wan District, Bangkok, 10330, Thailand",
+    "fetchedOn": "2026-09-18"
   }
 }

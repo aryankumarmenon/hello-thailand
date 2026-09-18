@@ -11,5 +11,10 @@
   },
   "price": {
     "status": "unverified"
+  },
+  "geocode": {
+    "query": "Lak Mueang, Bangkok, Thailand",
+    "matched": "Lak Mueang Road, Tha Chang, Phra Borom Maha Ratchawang Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
   }
 }

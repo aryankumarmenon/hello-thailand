@@ -11,5 +11,10 @@
   },
   "price": {
     "status": "unverified"
+  },
+  "geocode": {
+    "query": "Wat Phra Kaew, Bangkok, Thailand",
+    "matched": "Wat Phra Kaew, Na Phra Lan Road, Tha Chang, Phra Borom Maha Ratchawang Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
   }
 }

@@ -11,5 +11,10 @@
   },
   "price": {
     "status": "unverified"
+  },
+  "geocode": {
+    "query": "Jay Fai, Bangkok, Thailand",
+    "matched": "Raan Jay Fai, Maha Chai Road, ชุมชนวังกรมพระสมมตอมรพันธุ์, Samran Rat Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
   }
 }

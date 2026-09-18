@@ -11,5 +11,10 @@
   },
   "price": {
     "status": "unverified"
+  },
+  "geocode": {
+    "query": "Yaowarat, Bangkok, Thailand",
+    "matched": "Yaowarat, Samphanthawong Subdistrict, Samphanthawong District, Bangkok, 10100, Thailand",
+    "fetchedOn": "2026-09-18"
   }
 }

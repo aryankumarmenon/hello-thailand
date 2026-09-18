@@ -11,5 +11,10 @@
   },
   "price": {
     "status": "unverified"
+  },
+  "geocode": {
+    "query": "Studio Lam, Sukhumvit 51, Bangkok, Thailand",
+    "matched": "Studio Lam, Soi Sukhumvit 51, Khlong Tan Nuea Subdistrict, Vadhana District, Bangkok, 10110, Thailand",
+    "fetchedOn": "2026-09-18"
   }
 }
