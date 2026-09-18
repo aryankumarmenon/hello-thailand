@@ -69,20 +69,54 @@ export type AllowedRow = Partial<Record<(typeof ALLOWED_COLUMNS)[number], string
 /**
  * Parse the CSV, keeping only allowlisted columns.
  *
+ * The header is checked position by position, and every row must have exactly as many
+ * fields as the header. Both checks exist for the same reason: reading columns by
+ * position is only safe while the positions are known to be right. A row one field short
+ * shifts every value left, which silently lands the private Notes text in Address — a
+ * leak the allowlist alone cannot stop, because by then Notes IS column four.
+ *
  * `bom: true` strips the UTF-8 byte order mark, which would otherwise make the first
- * header read as "﻿Name" and silently drop every Name.
+ * header read as "\uFEFFName" and fail the header check.
  */
 export function parseAllowedRows(csv: string): AllowedRow[] {
-  return parse(csv, {
-    bom: true,
-    trim: true,
-    skip_empty_lines: true,
-    relax_column_count: true,
-    // Returning false for a column tells csv-parse to discard it: a dropped column
-    // never becomes a key, so Notes cannot be read further down.
-    columns: (header: string[]) =>
-      header.map((name) => (ALLOWED_COLUMNS.includes(name as never) ? name : false)),
-  }) as AllowedRow[];
+  let records: string[][];
+  try {
+    records = parse(csv, { bom: true, trim: true, skip_empty_lines: true }) as string[][];
+  } catch (error) {
+    // csv-parse rejects a row of the wrong width on its own, now that relax_column_count
+    // is gone. Its message says what happened; this one says why it matters.
+    throw new Error(
+      `${error instanceof Error ? error.message : String(error)}. ` +
+        `A row of the wrong width shifts later columns left, which would move Notes into Address.`,
+    );
+  }
+
+  const [header, ...rows] = records;
+  if (!header) throw new Error("the CSV is empty: no header row");
+
+  ALLOWED_COLUMNS.forEach((expected, index) => {
+    if (header[index] !== expected) {
+      throw new Error(
+        `CSV column ${index + 1} is ${JSON.stringify(header[index] ?? "")}, expected ${JSON.stringify(expected)}. ` +
+          `The importer reads columns by position, so it refuses a header it does not recognise.`,
+      );
+    }
+  });
+
+  return rows.map((row, index) => {
+    if (row.length !== header.length) {
+      throw new Error(
+        `line ${index + 2} has ${row.length} field(s) but the header has ${header.length}. ` +
+          `A row of the wrong width shifts later columns left, which would move Notes into Address.`,
+      );
+    }
+    // Read only the allowlisted positions. Notes sits beyond them and is never touched.
+    const allowed: AllowedRow = {};
+    ALLOWED_COLUMNS.forEach((name, column) => {
+      allowed[name] = row[column];
+    });
+    return allowed;
+  });
 }
 
 export function slugify(name: string): string {

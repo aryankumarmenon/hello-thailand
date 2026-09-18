@@ -77,6 +77,51 @@ describe("parseAllowedRows", () => {
   });
 });
 
+describe("a CSV whose shape cannot be trusted is refused", () => {
+  const withBom = (body: string) => `\ufeffName,Region,Category,Address,Notes\n${body}`;
+
+  // The leak the column allowlist cannot catch: once a row is short, Notes IS column four.
+  it("refuses a row with too few fields instead of shifting Notes into Address", () => {
+    expect(() => parseAllowedRows(withBom("Short Row,Bangkok,Temple,PRIVATE-NOTE-TEXT\n"))).toThrow(
+      /would move Notes into Address/,
+    );
+  });
+
+  it("names the line, so the CSV can be fixed", () => {
+    const body = "Fine Row,Bangkok,Temple,1 Road,note\nShort Row,Bangkok,Temple,PRIVATE\n";
+    expect(() => parseAllowedRows(withBom(body))).toThrow(/line 3/);
+  });
+
+  it("refuses a row with too many fields", () => {
+    expect(() => parseAllowedRows(withBom("Wide Row,Bangkok,Temple,1 Road,note,extra\n"))).toThrow(
+      /Invalid Record Length/,
+    );
+  });
+
+  it("refuses a header whose columns have been reordered", () => {
+    expect(() =>
+      parseAllowedRows("\ufeffName,Category,Region,Address,Notes\nA,Temple,Bangkok,1 Road,n\n"),
+    ).toThrow(/column 2 is "Category", expected "Region"/);
+  });
+
+  it("refuses a header whose column has been renamed", () => {
+    expect(() =>
+      parseAllowedRows("\ufeffName,Region,Category,Location,Notes\nA,Bangkok,Temple,1 Road,n\n"),
+    ).toThrow(/column 4 is "Location", expected "Address"/);
+  });
+
+  it("refuses an empty file", () => {
+    expect(() => parseAllowedRows("")).toThrow(/no header row/);
+  });
+
+  it("still accepts a well-formed CSV", () => {
+    const rows = parseAllowedRows(withBom("Good Row,Bangkok,Temple,1 Road,a private note\n"));
+    expect(rows).toEqual([
+      { Name: "Good Row", Region: "Bangkok", Category: "Temple", Address: "1 Road" },
+    ]);
+  });
+});
+
 describe("toPlaces", () => {
   it("drops Sleep rows and says why", async () => {
     const { places, skipped } = toPlaces(parseAllowedRows(await readFixture()));
