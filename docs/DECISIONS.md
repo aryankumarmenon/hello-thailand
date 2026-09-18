@@ -3,9 +3,9 @@
 Why the product is shaped the way it is. Decided in a structured interview and several research and review
 passes on 15 Sep 2026. Technical decisions live in `adr/`; the resulting spec is in `PLAN.md`.
 
-To change a decision: agree it between both owners, edit the row here with the new answer, the date and the reason,
-then update `PLAN.md`. Rows under **Closed** stay closed unless a listed reopen condition is met. Rows under **Open** are not decided yet;
-when both owners decide one, move it into its section with the date.
+To change a decision: edit the row here with the new answer, the date and the reason, then update `PLAN.md`.
+Rows under **Closed** stay closed unless a listed reopen condition is met. Rows under **Open** are not decided yet;
+when one is decided, move it into its section with the date.
 
 ## Frame
 

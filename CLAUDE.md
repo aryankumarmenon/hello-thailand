@@ -2,8 +2,8 @@
 
 # Hello Thailand
 
-Two-person project. Start every session by reading `docs/STATUS.md`: it says what is in progress, who owns
-it, and what is blocked.
+Solo project: Aryan owns every milestone. Start every session by reading `docs/STATUS.md`: it says what is
+in progress and what is blocked.
 
 ## Project docs — read when the task touches them
 
@@ -32,9 +32,9 @@ it, and what is blocked.
   and email capture until `docs/DECISIONS.md` says otherwise.
 - Done means `pnpm check && pnpm build` pass, with the output shown.
 
-## Working together
+## Working method
 
-- Claim a milestone in `docs/STATUS.md` before starting it. One owner per milestone.
+- Mark a milestone in progress in `docs/STATUS.md` before starting it. One milestone at a time.
 - One branch per milestone (for example `m1-data-pipeline`), merged into `main` by pull request with CI green.
   Branch names, rebasing, merging and the review agents in `.claude/agents/` are in `docs/WORKFLOW.md`.
 - Update `docs/STATUS.md` in the same pull request. A changed product decision goes in `docs/DECISIONS.md`, a

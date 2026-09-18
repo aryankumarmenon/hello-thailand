@@ -12,7 +12,8 @@ How a change gets from a branch into `main`: branches, commits, rebasing, pull r
   - docs only: `docs-<slug>`
   - tooling, agents, dependencies, CI: `chore-<slug>`
   - a bug fix outside a milestone: `fix-<slug>`
-- One owner per branch. Only the owner pushes to it. Rebasing is safe only because of this rule.
+- Nobody else pushes to a branch here. Rebasing is safe only because of that, so it stops being safe the
+  moment you share a branch with someone.
 - Start every branch from the latest `main`, without tracking `main`:
 
   ```bash
@@ -51,7 +52,7 @@ git push --force-with-lease
 
 - You MUST push a rebased branch with `--force-with-lease`, never `--force`. It refuses to overwrite commits on
   GitHub that you have not fetched.
-- You MUST NOT rebase `main`, or a branch that another person has pushed to.
+- You MUST NOT rebase `main`, or any branch you have already shared with someone else.
 - Rebase before you open a pull request, and again when `main` changes files that your branch also changes.
 - To bring `main` into your branch, rebase. Do not merge `main` into it.
 - On a conflict: fix the file, `git add <file>`, then `git rebase --continue`. To stop and go back to where you
@@ -79,7 +80,8 @@ Keep a stack to two branches.
 - Open a pull request only after `pnpm check && pnpm build` pass locally.
 - Title: what the change does. Body: summary, any decision changes, and the verification output.
 - Milestone work updates `docs/STATUS.md` in the same pull request.
-- A pull request that changes `docs/DECISIONS.md` MUST have the other owner's approval.
+- A pull request that changes `docs/DECISIONS.md` MUST give the new answer, the date and the reason in the
+  row itself. There is no second approver, so the row is the only record of why the decision moved.
 
 ### Reviews before you open or update a pull request
 
@@ -95,8 +97,8 @@ Keep a stack to two branches.
 
 - Run an agent with `@agent-security-reviewer`, or ask Claude to "use the security-reviewer agent on this
   branch".
-- The agents live in `.claude/agents/` and are committed, so both owners have them. Engineering plugin skills
-  are installed per person; skip those rows if you do not have the plugin.
+- The agents live in `.claude/agents/` and are committed, so they travel with the repo. Engineering plugin
+  skills are installed per machine; skip those rows if you do not have the plugin.
 - The agents report and never edit. You decide which findings to fix.
 
 ## Merging a pull request
@@ -112,9 +114,9 @@ Keep a stack to two branches.
 
 - **Private data or a secret is in a commit that is not pushed:** remove it, then `git commit --amend`, or
   `git reset --soft HEAD~1` and commit again.
-- **It is already pushed:** treat it as public. Rotate the secret first and tell the other owner. A new
-  commit that deletes it does not remove it from history, and GitHub or forks may keep copies. Rewriting
-  history needs both owners to agree.
+- **It is already pushed:** treat it as public. Rotate the secret first. A new commit that deletes it does
+  not remove it from history, and GitHub or forks may keep copies. Rewriting history is the last resort: it
+  breaks every existing clone, so weigh it against simply rotating what leaked.
 - **You committed on local `main` by mistake:** save the work first with `git branch fix-<slug>`, check that
   `git log fix-<slug>` shows the commit, then `git switch main` and `git reset --hard origin/main`.
 - **You changed files on the wrong branch and have not committed:** `git stash`, `git switch <branch>`,
