@@ -1,0 +1,15 @@
+{
+  "id": "erawan-shrine",
+  "name": "Erawan Shrine",
+  "city": "bangkok",
+  "topics": ["sight"],
+  "address": "Erawan Shrine, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7443205,
+    "lng": 100.5404211
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

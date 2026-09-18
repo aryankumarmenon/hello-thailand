@@ -1,0 +1,15 @@
+{
+  "id": "golden-mount-wat-saket",
+  "name": "Golden Mount (Wat Saket)",
+  "city": "bangkok",
+  "topics": ["temple"],
+  "address": "Wat Saket Golden Mount, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7538556,
+    "lng": 100.5066921
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "museum-of-siam",
+  "name": "Museum of Siam",
+  "city": "bangkok",
+  "topics": ["museum"],
+  "address": "Museum of Siam, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7439935,
+    "lng": 100.4938519
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

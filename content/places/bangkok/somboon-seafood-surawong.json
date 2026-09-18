@@ -1,0 +1,15 @@
+{
+  "id": "somboon-seafood-surawong",
+  "name": "Somboon Seafood Surawong",
+  "city": "bangkok",
+  "topics": ["eat"],
+  "address": "Somboon Seafood, Surawong, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.728217,
+    "lng": 100.5266806
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

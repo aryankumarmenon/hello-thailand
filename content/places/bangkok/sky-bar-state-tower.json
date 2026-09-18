@@ -1,0 +1,15 @@
+{
+  "id": "sky-bar-state-tower",
+  "name": "Sky Bar (State Tower)",
+  "city": "bangkok",
+  "topics": ["drink"],
+  "address": "Sky Bar Lebua State Tower, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7212222,
+    "lng": 100.5170726
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

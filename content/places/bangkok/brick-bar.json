@@ -1,0 +1,15 @@
+{
+  "id": "brick-bar",
+  "name": "Brick Bar",
+  "city": "bangkok",
+  "topics": ["live-music"],
+  "address": "Brick Bar, Khao San Road, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7585971,
+    "lng": 100.4984729
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "chatuchak-weekend-market",
+  "name": "Chatuchak Weekend Market",
+  "city": "bangkok",
+  "topics": ["market"],
+  "address": "Chatuchak Weekend Market, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.8002651,
+    "lng": 100.5511228
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "silom-thai-cooking-school",
+  "name": "Silom Thai Cooking School",
+  "city": "bangkok",
+  "topics": ["cooking"],
+  "address": "Silom Thai Cooking School, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7226485,
+    "lng": 100.5244447
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

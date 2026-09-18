@@ -1,0 +1,11 @@
+{
+  "id": "likhit-kai-yang",
+  "name": "Likhit Kai Yang",
+  "city": "bangkok",
+  "topics": ["eat"],
+  "address": "Likhit Kai Yang, Ratchadamnoen Stadium, Bangkok, Thailand",
+  "source": "editorial",
+  "price": {
+    "status": "unverified"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "ratchadamnoen-stadium",
+  "name": "Ratchadamnoen Stadium",
+  "city": "bangkok",
+  "topics": ["muay-thai"],
+  "address": "Rajadamnern Stadium, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7610018,
+    "lng": 100.5087556
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

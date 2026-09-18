@@ -1,0 +1,15 @@
+{
+  "id": "krua-apsorn",
+  "name": "Krua Apsorn",
+  "city": "bangkok",
+  "topics": ["eat"],
+  "address": "Krua Apsorn, Th Din So, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7552412,
+    "lng": 100.501761
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

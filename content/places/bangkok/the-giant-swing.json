@@ -1,0 +1,15 @@
+{
+  "id": "the-giant-swing",
+  "name": "The Giant Swing",
+  "city": "bangkok",
+  "topics": ["sight"],
+  "address": "Giant Swing Sao Ching Cha, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7523605,
+    "lng": 100.5006538
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

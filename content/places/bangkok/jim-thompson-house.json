@@ -1,0 +1,15 @@
+{
+  "id": "jim-thompson-house",
+  "name": "Jim Thompson House",
+  "city": "bangkok",
+  "topics": ["museum"],
+  "address": "Jim Thompson House, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7492268,
+    "lng": 100.5282811
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

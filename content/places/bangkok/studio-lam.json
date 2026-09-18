@@ -1,0 +1,15 @@
+{
+  "id": "studio-lam",
+  "name": "Studio Lam",
+  "city": "bangkok",
+  "topics": ["nightlife"],
+  "address": "Studio Lam, Sukhumvit 51, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7263038,
+    "lng": 100.5764776
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

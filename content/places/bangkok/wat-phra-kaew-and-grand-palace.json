@@ -1,0 +1,15 @@
+{
+  "id": "wat-phra-kaew-and-grand-palace",
+  "name": "Wat Phra Kaew & Grand Palace",
+  "city": "bangkok",
+  "topics": ["temple"],
+  "address": "Wat Phra Kaew, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7514974,
+    "lng": 100.4926592
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

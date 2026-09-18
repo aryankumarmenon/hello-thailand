@@ -1,0 +1,15 @@
+{
+  "id": "ayutthaya",
+  "name": "Ayutthaya",
+  "city": "bangkok",
+  "topics": ["day-trip"],
+  "address": "Ayutthaya Historical Park, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 14.3535461,
+    "lng": 100.5622548
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

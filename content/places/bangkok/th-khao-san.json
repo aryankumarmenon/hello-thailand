@@ -1,0 +1,15 @@
+{
+  "id": "th-khao-san",
+  "name": "Th Khao San",
+  "city": "bangkok",
+  "topics": ["area"],
+  "address": "Khao San Road, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7589052,
+    "lng": 100.4972746
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

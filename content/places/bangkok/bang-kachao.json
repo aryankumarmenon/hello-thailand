@@ -1,0 +1,11 @@
+{
+  "id": "bang-kachao",
+  "name": "Bang Kachao",
+  "city": "bangkok",
+  "topics": ["day-trip"],
+  "address": "Bang Kachao, Bangkok, Thailand",
+  "source": "editorial",
+  "price": {
+    "status": "unverified"
+  }
+}

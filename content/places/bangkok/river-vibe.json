@@ -1,0 +1,15 @@
+{
+  "id": "river-vibe",
+  "name": "River Vibe",
+  "city": "bangkok",
+  "topics": ["drink"],
+  "address": "River Vibe Restaurant Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7344426,
+    "lng": 100.5119774
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

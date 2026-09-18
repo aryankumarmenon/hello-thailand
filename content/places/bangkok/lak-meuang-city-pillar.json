@@ -1,0 +1,15 @@
+{
+  "id": "lak-meuang-city-pillar",
+  "name": "Lak Meuang City Pillar",
+  "city": "bangkok",
+  "topics": ["sight"],
+  "address": "Lak Mueang, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7524013,
+    "lng": 100.4947493
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "lumphini-park",
+  "name": "Lumphini Park",
+  "city": "bangkok",
+  "topics": ["park"],
+  "address": "Lumphini Park, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7306004,
+    "lng": 100.5415377
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

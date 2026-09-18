@@ -1,0 +1,15 @@
+{
+  "id": "wat-pho",
+  "name": "Wat Pho",
+  "city": "bangkok",
+  "topics": ["temple"],
+  "address": "Wat Pho, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7463456,
+    "lng": 100.4927381
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

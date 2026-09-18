@@ -1,0 +1,15 @@
+{
+  "id": "lumpinee-boxing-stadium",
+  "name": "Lumpinee Boxing Stadium",
+  "city": "bangkok",
+  "topics": ["muay-thai"],
+  "address": "Lumpinee Boxing Stadium, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.8670039,
+    "lng": 100.608727
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

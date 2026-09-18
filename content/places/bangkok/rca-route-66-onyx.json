@@ -1,0 +1,15 @@
+{
+  "id": "rca-route-66-onyx",
+  "name": "RCA (Route 66 / Onyx)",
+  "city": "bangkok",
+  "topics": ["nightlife"],
+  "address": "RCA Royal City Avenue, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7511319,
+    "lng": 100.5758157
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

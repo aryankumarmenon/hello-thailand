@@ -1,0 +1,11 @@
+{
+  "id": "wtf-bar-and-gallery",
+  "name": "WTF Bar & Gallery",
+  "city": "bangkok",
+  "topics": ["nightlife"],
+  "address": "WTF Bar and Gallery, Thonglor, Bangkok, Thailand",
+  "source": "editorial",
+  "price": {
+    "status": "unverified"
+  }
+}

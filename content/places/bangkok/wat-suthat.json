@@ -1,0 +1,15 @@
+{
+  "id": "wat-suthat",
+  "name": "Wat Suthat",
+  "city": "bangkok",
+  "topics": ["temple"],
+  "address": "Wat Suthat, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7501919,
+    "lng": 100.5003441
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

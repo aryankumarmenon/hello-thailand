@@ -1,0 +1,15 @@
+{
+  "id": "wat-arun",
+  "name": "Wat Arun",
+  "city": "bangkok",
+  "topics": ["temple"],
+  "address": "Wat Arun, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7438976,
+    "lng": 100.4885137
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

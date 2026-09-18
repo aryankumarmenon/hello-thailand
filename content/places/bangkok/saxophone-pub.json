@@ -1,0 +1,15 @@
+{
+  "id": "saxophone-pub",
+  "name": "Saxophone Pub",
+  "city": "bangkok",
+  "topics": ["live-music"],
+  "address": "Saxophone Pub, Victory Monument, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7636293,
+    "lng": 100.5380821
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

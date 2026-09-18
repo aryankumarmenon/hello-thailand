@@ -1,0 +1,15 @@
+{
+  "id": "suvarnabhumi-airport-bkk",
+  "name": "Suvarnabhumi Airport (BKK)",
+  "city": "bangkok",
+  "topics": ["transit"],
+  "address": "Suvarnabhumi Airport, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.721553,
+    "lng": 100.7244682
+  },
+  "price": {
+    "status": "unverified"
+  }
+}
