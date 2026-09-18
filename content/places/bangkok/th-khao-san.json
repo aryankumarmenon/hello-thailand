@@ -9,12 +9,12 @@
     "lat": 13.7589052,
     "lng": 100.4972746
   },
-  "price": {
-    "status": "unverified"
-  },
   "geocode": {
     "query": "Th Khao San, Bangkok, Thailand",
     "matched": "Khao San Road, Talat Yot Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
     "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
   }
 }

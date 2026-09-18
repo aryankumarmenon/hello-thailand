@@ -9,12 +9,12 @@
     "lat": 13.7538556,
     "lng": 100.5066921
   },
-  "price": {
-    "status": "unverified"
-  },
   "geocode": {
     "query": "Golden Mount, Bangkok, Thailand",
     "matched": "Golden Mount, 344, Paribatra Road, Ban Bat Community, Ban Bat Subdistrict, Pom Prap Sattru Phai District, Bangkok, 10100, Thailand",
     "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
   }
 }

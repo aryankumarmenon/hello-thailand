@@ -9,12 +9,12 @@
     "lat": 13.7552412,
     "lng": 100.501761
   },
-  "price": {
-    "status": "unverified"
-  },
   "geocode": {
     "query": "Krua Apsorn, Bangkok, Thailand",
     "matched": "Krua Apsorn, 169, Dinso Road, Lang Wat Ratchanatda Community, Bowon Niwet Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
     "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
   }
 }

@@ -9,12 +9,12 @@
     "lat": 13.7585971,
     "lng": 100.4984729
   },
-  "price": {
-    "status": "unverified"
-  },
   "geocode": {
     "query": "Brick Bar, Khao San Road, Bangkok, Thailand",
     "matched": "Brick Bar, Khao San Road, Talat Yot Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
     "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
   }
 }

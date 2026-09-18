@@ -16,7 +16,7 @@ import { setTimeout as sleep } from "node:timers/promises";
 import { z } from "zod";
 
 import { Coordinates, Place } from "../src/domain/schemas/place";
-import { writeJson } from "./write-json";
+import { writeJson, writePlace } from "./write-json";
 
 const USER_AGENT = "hello-thailand/0.1 (+https://hello-thailand-planner.vercel.app)";
 const ONE_REQUEST_EVERY_MS = 1_100;
@@ -183,6 +183,14 @@ export function nominatimUrl(query: string): string {
   return url.toString();
 }
 
+/** A copy of the place with no pin, and no evidence for a pin it no longer has. */
+function withoutPin(place: Place): Place {
+  const copy = { ...place };
+  delete copy.coordinates;
+  delete copy.geocode;
+  return copy;
+}
+
 export type Lookup = (query: string) => Promise<unknown>;
 
 export const liveLookup: Lookup = async (query) => {
@@ -193,6 +201,8 @@ export const liveLookup: Lookup = async (query) => {
 
 export type GeocodeReport = {
   located: { id: string; from: "override" | "cache" | "nominatim" }[];
+  /** Deliberately left unpinned by a skip override. A recorded decision, not a failure. */
+  skipped: { id: string; note: string }[];
   problems: string[];
 };
 
@@ -214,7 +224,7 @@ export async function geocodePlaces(
   },
 ): Promise<{ places: Place[]; report: GeocodeReport }> {
   const { cache, overrides, lookup, today } = options;
-  const report: GeocodeReport = { located: [], problems: [] };
+  const report: GeocodeReport = { located: [], skipped: [], problems: [] };
   const out: Place[] = [];
 
   for (const place of places) {
@@ -223,16 +233,14 @@ export async function geocodePlaces(
     // it must be able to correct a committed pin, not only fill an empty one.
     const override = overrides[place.id];
     if (override && "skip" in override) {
-      const { coordinates: _dropped, geocode: _evidence, ...unpinned } = place;
-      report.problems.push(`${place.id}: skipped by override - ${override.note}`);
-      out.push(unpinned);
+      report.skipped.push({ id: place.id, note: override.note });
+      out.push(withoutPin(place));
       continue;
     }
     if (override) {
       const checked = Coordinates.safeParse({ lat: override.lat, lng: override.lng });
       if (checked.success) {
-        const { geocode: _evidence, ...rest } = place;
-        out.push({ ...rest, coordinates: checked.data });
+        out.push({ ...withoutPin(place), coordinates: checked.data });
         report.located.push({ id: place.id, from: "override" });
       } else {
         report.problems.push(`${place.id}: override is outside Thailand`);
@@ -397,6 +405,7 @@ async function main(): Promise<void> {
   console.log(
     `located ${report.located.length} (${fromNetwork} from Nominatim, ${report.located.length - fromNetwork} from cache or overrides)`,
   );
+  for (const { id, note } of report.skipped) console.log(`  ${id}: left unpinned - ${note}`);
   for (const problem of report.problems) console.log(`  ${problem}`);
 
   // A place OSM cannot find needs a person to read the coordinates off a map, so print
@@ -429,7 +438,7 @@ async function main(): Promise<void> {
     if (!entry) continue;
     // Write whenever the record changed: a new pin, a corrected pin, or a pin removed.
     if (JSON.stringify(place) === JSON.stringify(entry.place)) continue;
-    await writeJson(entry.file, place);
+    await writePlace(entry.file, place);
   }
   console.log(`cache: ${Object.keys(cache).length} queries`);
   if (report.problems.length > 0) process.exitCode = 1;

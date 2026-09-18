@@ -9,12 +9,12 @@
     "lat": 13.728217,
     "lng": 100.5266806
   },
-  "price": {
-    "status": "unverified"
-  },
   "geocode": {
     "query": "Somboon Seafood Surawong, Bangkok, Thailand",
     "matched": "Somboon Seafood, Surawong Road, Pramot, Suriyawong Subdistrict, Bang Rak District, Bangkok, 10500, Thailand",
     "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
   }
 }

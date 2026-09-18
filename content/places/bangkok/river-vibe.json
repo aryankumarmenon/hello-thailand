@@ -9,12 +9,12 @@
     "lat": 13.7344426,
     "lng": 100.5119774
   },
-  "price": {
-    "status": "unverified"
-  },
   "geocode": {
     "query": "River Vibe Restaurant Bangkok, Thailand",
     "matched": "River Vibe Restaurant & Bar, 768, Soi Wanit 2, Sieng Kong, Samphanthawong Subdistrict, Samphanthawong District, Bangkok, 10100, Thailand",
     "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
   }
 }

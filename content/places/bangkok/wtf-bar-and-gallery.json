@@ -5,11 +5,11 @@
   "topics": ["nightlife"],
   "address": "WTF Bar and Gallery, Thonglor, Bangkok, Thailand",
   "source": "editorial",
-  "price": {
-    "status": "unverified"
-  },
   "coordinates": {
     "lat": 13.726618,
     "lng": 100.5761862
+  },
+  "price": {
+    "status": "unverified"
   }
 }

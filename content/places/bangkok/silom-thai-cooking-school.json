@@ -9,12 +9,12 @@
     "lat": 13.7226485,
     "lng": 100.5244447
   },
-  "price": {
-    "status": "unverified"
-  },
   "geocode": {
     "query": "Silom Thai Cooking School, Bangkok, Thailand",
     "matched": "Silom Thai Cooking school, Soi Si Lom 13, Si Lom Subdistrict, Bang Rak District, Bangkok, 10500, Thailand",
     "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
   }
 }

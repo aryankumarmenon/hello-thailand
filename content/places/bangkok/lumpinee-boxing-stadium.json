@@ -9,12 +9,12 @@
     "lat": 13.8670039,
     "lng": 100.608727
   },
-  "price": {
-    "status": "unverified"
-  },
   "geocode": {
     "query": "Lumpinee Boxing Stadium, Bangkok, Thailand",
     "matched": "Lumpinee Boxing Stadium, 6, Ram Inthra Road, Anusawari Subdistrict, Bang Khen District, Bangkok, 10010, Thailand",
     "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
   }
 }

@@ -9,12 +9,12 @@
     "lat": 13.7463456,
     "lng": 100.4927381
   },
-  "price": {
-    "status": "unverified"
-  },
   "geocode": {
     "query": "Wat Pho, Bangkok, Thailand",
     "matched": "Wat Phra Chettuphon Wimon Mangkhalaram Ratchaworamahawihan, วงเวียน รด., Tha Tien Community, Phra Borom Maha Ratchawang Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
     "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
   }
 }

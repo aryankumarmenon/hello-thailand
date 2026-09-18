@@ -9,12 +9,12 @@
     "lat": 13.7511319,
     "lng": 100.5758157
   },
-  "price": {
-    "status": "unverified"
-  },
   "geocode": {
     "query": "RCA, Bangkok, Thailand",
     "matched": "RCA, Bang Kapi Subdistrict, Huai Khwang District, Bangkok, 10310, Thailand",
     "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
   }
 }

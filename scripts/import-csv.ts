@@ -13,7 +13,7 @@ import path from "node:path";
 import { parse } from "csv-parse/sync";
 
 import { CITY_SLUGS, Place, type CitySlug, type TopicSlug } from "../src/domain/schemas/place";
-import { writeJson } from "./write-json";
+import { writePlace } from "./write-json";
 
 /** The only columns the importer may see. Everything else is dropped at the parser. */
 export const ALLOWED_COLUMNS = ["Name", "Region", "Category", "Address"] as const;
@@ -232,7 +232,7 @@ async function readExisting(city: CitySlug, id: string): Promise<Place | undefin
 
 export async function writePlaces(places: Place[], root = CONTENT_ROOT): Promise<void> {
   for (const place of places) {
-    await writeJson(path.join(root, place.city, `${place.id}.json`), place);
+    await writePlace(path.join(root, place.city, `${place.id}.json`), place);
   }
 }
 

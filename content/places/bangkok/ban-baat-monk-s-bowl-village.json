@@ -5,11 +5,11 @@
   "topics": ["sight"],
   "address": "Ban Baat Monks Bowl Village, Bangkok, Thailand",
   "source": "editorial",
-  "price": {
-    "status": "unverified"
-  },
   "coordinates": {
     "lat": 13.7510414,
     "lng": 100.5057734
+  },
+  "price": {
+    "status": "unverified"
   }
 }

@@ -201,6 +201,30 @@ describe("geocodePlaces", () => {
     expect(lookup).toHaveBeenCalledTimes(firstRunCalls);
   });
 
+  it("leaves a place unpinned when the override says to skip it, and says why", async () => {
+    const overrides: GeocodeOverrides = {
+      "wat-pho": { skip: true, note: "OSM matches a different venue 12 km away" },
+    };
+    const pinned = place({ coordinates: { lat: 13.7, lng: 100.5 } });
+    const { places, report, lookup } = await run([pinned], { overrides });
+    expect(lookup).not.toHaveBeenCalled();
+    // A skip must be able to remove a wrong pin that is already committed.
+    expect(places[0]?.coordinates).toBeUndefined();
+    expect(report.skipped).toEqual([
+      { id: "wat-pho", note: "OSM matches a different venue 12 km away" },
+    ]);
+    expect(report.problems).toEqual([]);
+  });
+
+  it("lets an override correct a pin that already exists", async () => {
+    const overrides: GeocodeOverrides = {
+      "wat-pho": { lat: 13.7465, lng: 100.4927, note: "read off a map" },
+    };
+    const wronglyPinned = place({ coordinates: { lat: 13.1, lng: 100.1 } });
+    const { places } = await run([wronglyPinned], { overrides });
+    expect(places[0]?.coordinates).toEqual({ lat: 13.7465, lng: 100.4927 });
+  });
+
   it("prefers a hand-set override over the network", async () => {
     const overrides: GeocodeOverrides = {
       "wat-pho": { lat: 13.7465, lng: 100.4927, note: "Nominatim matched the wrong gate" },

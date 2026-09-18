@@ -9,12 +9,12 @@
     "lat": 13.7306004,
     "lng": 100.5415377
   },
-  "price": {
-    "status": "unverified"
-  },
   "geocode": {
     "query": "Lumphini Park, Bangkok, Thailand",
     "matched": "Lumphini Park, 192, Pathum Wan District, Bangkok, 10330, Thailand",
     "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
   }
 }
