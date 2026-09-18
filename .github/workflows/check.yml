@@ -21,3 +21,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
       - run: pnpm build
+      # ADR 0003: the denylist is private, so CI reads it from a secret. A missing
+      # secret fails the job rather than passing a check that never ran.
+      - run: pnpm privacy-lint
+        env:
+          PRIVACY_DENYLIST: ${{ secrets.PRIVACY_DENYLIST }}

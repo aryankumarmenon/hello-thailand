@@ -18,7 +18,12 @@
     "test:deploy": "playwright test -c playwright.deploy.config.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm format:check"
+    "validate-content": "tsx scripts/validate-content.ts",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm validate-content && pnpm format:check",
+    "privacy-lint": "tsx scripts/privacy-lint.ts",
+    "import:places": "tsx scripts/import-csv.ts",
+    "geocode": "tsx scripts/geocode.ts",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.13.11",

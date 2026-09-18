@@ -1,0 +1,10 @@
+#!/bin/sh
+# Privacy lint on what is about to be committed (docs/adr/0003-private-source-data.md).
+# Enabled by `pnpm install`, which sets core.hooksPath to this directory.
+set -e
+
+if [ -z "$(git diff --cached --name-only --diff-filter=ACM)" ]; then
+  exit 0
+fi
+
+pnpm tsx scripts/privacy-lint.ts --staged
