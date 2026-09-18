@@ -77,11 +77,24 @@ Keep a stack to two branches.
 
 ## Pull requests
 
-- Open a pull request only after `pnpm check && pnpm build` pass locally.
+- Open a pull request only after `pnpm check && pnpm build` pass locally. A green check is not evidence that
+  the branch is safe to publish: it was green while private data sat in a fixture, while four map pins pointed
+  at the wrong venue, and while the privacy lint was inert. Checks prove the code works; the review agents are
+  what judge whether it should be published.
 - Title: what the change does. Body: summary, any decision changes, and the verification output.
 - Milestone work updates `docs/STATUS.md` in the same pull request.
 - A pull request that changes `docs/DECISIONS.md` MUST give the new answer, the date and the reason in the
   row itself. There is no second approver, so the row is the only record of why the decision moved.
+
+### Before the first commit that adds content
+
+Two things MUST be true before content or a fixture is committed, because neither is fixable cheaply
+afterwards:
+
+- `.privacy-denylist` has real entries, and `pnpm privacy-lint` prints `clean (N entries checked)` rather than
+  `Skipping`. An empty denylist means ADR 0003's second defence is switched off, and the pre-commit hook is
+  protecting nothing.
+- The `PRIVACY_DENYLIST` repository secret holds the same list, or CI fails closed on the first push.
 
 ### Reviews before you open or update a pull request
 
@@ -95,6 +108,13 @@ Keep a stack to two branches.
 | M7 ship or any production deploy                                                                                                    | `/engineering:deploy-checklist` (engineering plugin)                                |
 | Every pull request, as the last step                                                                                                | `pr-readiness` agent                                                                |
 
+- Run `content-reviewer` and `security-reviewer` **before the first commit that adds content or a fixture**,
+  not only before the pull request. Both gates that should have caught private data in a fixture — the column
+  allowlist and the privacy lint — are blind to a file written by hand, so a reading agent is the only thing
+  left. Finding it after six commits meant rewriting history; finding it before the commit would have been an
+  edit.
+- Record in the pull request body which reviews ran and what they found. `pr-readiness` cannot see whether the
+  others ran, and neither can a reader of the pull request six months later.
 - Run an agent with `@agent-security-reviewer`, or ask Claude to "use the security-reviewer agent on this
   branch".
 - The agents live in `.claude/agents/` and are committed, so they travel with the repo. Engineering plugin

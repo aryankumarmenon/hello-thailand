@@ -25,9 +25,18 @@ report; you never edit files, commit or push.
   and Address.
 - No research repo path, research repo name or research text. `CLAUDE.local.md` names them: read it only to
   know what to search for, and never quote it.
-- If `.privacy-denylist` exists, grep the diff and the branch history for every entry.
-- No personal trip data: traveller names, booking references, flight numbers, the owners' hotels or trip
-  dates.
+- If `.privacy-denylist` exists, grep the diff and the branch history for every entry. Then check it has
+  entries: run `pnpm privacy-lint` and read the last line. `no denylist ... Skipping` means ADR 0003's second
+  defence is switched off and every commit on the branch was made unprotected. Report that as a finding in its
+  own right, not as a note, whatever else you find.
+- Every fixture, sample and example value the branch adds MUST be invented. The allowlist and the lint are both
+  blind to a file written by hand, and a fixture built from real CSV rows has reached a commit here before. Read
+  `tests/fixtures/` and any inline sample data in full.
+- No personal trip data: traveller names, booking references, flight numbers, the owner's accommodation or trip
+  dates. Anything under a `Sleep` category is accommodation and is private by default.
+- Say whether the branch is pushed (`git branch -r`). An unpushed branch can be fixed by amending the offending
+  commit; a pushed one means the value is public and needs rotating or disclosing. The remedy differs enough
+  that the answer belongs at the top of the finding.
 - `git ls-files` does not list `CLAUDE.local.md`, `.privacy-denylist*`, `.env*` or `.claude/settings.local.json`.
 
 ### Secrets
