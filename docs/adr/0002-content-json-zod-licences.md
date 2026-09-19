@@ -18,6 +18,8 @@ database. Code should be reusable as a portfolio piece, but the researched conte
 - Records carry a stable `id` and a `source` of `editorial` or `community`, so later user content can join
   lists without a migration.
 - Code is MIT (`LICENSE`). Content is all rights reserved (`content/LICENSE`).
+  **Narrowed by ADR 0011:** the OpenStreetMap-derived geodata inside `content/` is ODbL and credited.
+  Everything researched and written stays all rights reserved.
 
 ## Consequences
 

@@ -17,21 +17,25 @@ asks two different things of two different kinds of output:
 - A **Produced Work** — something rendered _from_ a database, such as a map image or a web page — needs
   only the credit. It does not have to be ODbL.
 
-`content/geocode-cache.json` is a Derivative Database: 65 cached query results holding OSM coordinates
-and the `display_name` string each came from. The `coordinates` and `geocode` fields on each place file
-are the same data, copied into a record that is otherwise ours. The rendered place page will be a
-Produced Work.
+`content/geocode-cache.json` is a Derivative Database: 65 cached query results, of which 35 hold an OSM
+coordinate and the `display_name` string it came from, while 30 record that the query found nothing. The
+`coordinates` and `geocode` fields on each place file are the same data, copied into a record that is
+otherwise ours, and `content/overrides/geocode.json` holds six more coordinates entered by hand. The
+rendered place page will be a Produced Work.
 
-Whether 39 coordinates is a "Substantial" extract at all is arguable, and ODbL allows insubstantial
-ones freely. That argument is not worth having. The place list grows toward ~130, the cache grows with
-it, and coordinates are not what makes this site worth reading.
+Whether the 37 coordinates we hold is a "Substantial" extract at all is arguable, and ODbL allows
+insubstantial ones freely. That argument is not worth having. The place list grows toward ~130, the
+cache grows with it, and coordinates are not what makes this site worth reading.
 
 ## Decision
 
 The licence is split by **field**, not by directory.
 
-- **ODbL 1.0, credited to OpenStreetMap contributors:** `content/geocode-cache.json` in full, and the
-  `coordinates` and `geocode` fields of every place file.
+- **ODbL 1.0, credited to OpenStreetMap contributors:** `content/geocode-cache.json` in full; the
+  `coordinates` and `geocode` fields of every place file; and in `content/overrides/geocode.json`, the
+  `lat` and `lng` of every entry together with the OpenStreetMap place names quoted in its notes. The
+  override file is easy to miss because it is hand-edited, but a hand-copied coordinate is still an
+  extract.
 - **All rights reserved, as ADR 0002 says:** everything else in `content/` — names, topics, guide text,
   traveller notes, prices and their sources, cost ranges, and the editorial planner fields.
 

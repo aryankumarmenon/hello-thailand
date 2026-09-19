@@ -8,6 +8,8 @@ The following are derived from OpenStreetMap and are made available under the Op
 
 - `geocode-cache.json` in full
 - the `coordinates` and `geocode` fields of every file under `places/`
+- in `overrides/geocode.json`, the `lat` and `lng` of every entry, and the OpenStreetMap place
+  names quoted inside its `note` text
 
 © OpenStreetMap contributors. Data available under the Open Database License.
 

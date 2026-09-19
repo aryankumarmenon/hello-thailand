@@ -21,11 +21,11 @@
   "moon-bar-banyan-tree": {
     "lat": 13.7235907,
     "lng": 100.5397921,
-    "note": "Pinned on Banyan Tree Bangkok, 21 Soi Suan Phlu 6, Thung Maha Mek, Sathon, from Nominatim on 2026-09-19. Moon Bar is the hotel's 61st-floor rooftop, so the hotel is the right pin. The earlier run searched the bar name, which matches an unrelated Moon Bar in Chatuchak about 12 km away; the hotel name matches first time."
+    "note": "Pinned on Banyan Tree Bangkok, OSM node 4420339595, matched \"Banyan Tree Bangkok, 21, Soi Suan Phlu 6, Suan Phlu, Thung Maha Mek Subdistrict, Sathon District, Bangkok, 10120, Thailand\" from Nominatim on 2026-09-19. Moon Bar is the hotel's rooftop bar, so the hotel is the pin; the venue-to-hotel relationship still needs a public source when M4 writes this page. The earlier run searched the bar name, which matches an unrelated Moon Bar in Chatuchak about 12 km away; the hotel name returns this node as the only result."
   },
   "roof-at-sala-rattanakosin": {
     "skip": true,
-    "note": "Not in OpenStreetMap. Re-checked 2026-09-19: the name returns Wat Pho pavilions and Rattanakosin Island, an Overpass search of every tourism feature within 350 m of Tha Tien Pier lists the neighbouring hotels but not this one, and no building near the pier carries house number 39. Three unnamed hotel nodes stand nearby and cannot be told apart, so nothing is pinned. Needs coordinates read off a map."
+    "note": "Not in OpenStreetMap. Re-checked 2026-09-19: the name returns Wat Pho pavilions and Rattanakosin Island, and an Overpass search of every tourism feature within 350 m of Tha Tien Pier lists the neighbouring hotels but not this one. Three unnamed hotel nodes stand nearby and cannot be told apart. The place record's address is only \"Sala Rattanakosin Bangkok, Thailand\", with no street number to search on. Needs coordinates read off a map."
   },
   "suvarnabhumi-airport-bkk": {
     "lat": 13.6818767,

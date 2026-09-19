@@ -28,4 +28,6 @@ Project context lives in `docs/`: `STATUS.md` (who is doing what), `PLAN.md` (wh
 
 ## Licence
 
-Code: MIT (`LICENSE`). Content in `content/`: all rights reserved (`content/LICENSE`).
+Code: MIT (`LICENSE`). Content in `content/`: all rights reserved, except the OpenStreetMap-derived
+geodata, which is ODbL and credited to OpenStreetMap contributors. `content/LICENSE` says which files
+and fields are which; ADR 0011 says why.
