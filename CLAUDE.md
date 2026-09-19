@@ -26,6 +26,11 @@ in progress and what is blocked.
   `app/` and server components. ESLint enforces this; fix the import and keep the rule.
 - Private source data: import only Name, Region, Category and Address from the research CSV (ADR 0003). The
   CSV and the private research repo stay outside this repo.
+- Test data is invented. A fixture, an example or a sample row MUST NOT be copied from the research CSV or
+  the research repo, even one field of it. Realistic test data is a habit worth breaking here: a fixture only
+  has to exercise the code, and inventing it costs nothing. This caught us once already — see ADR 0003.
+- A safety check that reports it is not running is a blocker, not noise. If the privacy lint prints
+  "no denylist ... Skipping", stop and fix that before committing anything else.
 - Content: own words. A price carries a source URL and `checkedOn`; anything else is `unverified`. Photos
   come from licensed sources with credit.
 - Hosting is Vercel Hobby, which is non-commercial: the site stays free of affiliate links, ads, payments

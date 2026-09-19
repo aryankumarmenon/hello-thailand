@@ -26,6 +26,13 @@ commit, push or open the pull request.
 - Each commit subject is imperative and covers one step. Flag subjects such as "wip" or "fix stuff".
 - No uncommitted or untracked file that belongs to the change is left out.
 
+### Reviews actually ran
+
+- The pull request body MUST say which review agents ran and what they found. You cannot see their output, so
+  an unstated review is an unrun review: ask for it rather than assuming.
+- If the branch adds content or a fixture, `content-reviewer` and `security-reviewer` should have run **before**
+  the first such commit, not only at the end. Say so when the commit dates suggest otherwise.
+
 ### Docs in sync
 
 - Milestone work updates `docs/STATUS.md` in the same branch.
