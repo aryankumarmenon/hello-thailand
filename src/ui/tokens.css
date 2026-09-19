@@ -1,0 +1,141 @@
+/**
+ * Design tokens (docs/PLAN.md -> Design). Light theme only; M2-lite ships light, and dark
+ * mode moves after the trip.
+ *
+ * Contrast, measured rather than assumed. Every pair the components actually use clears
+ * WCAG AA for body text (4.5:1):
+ *
+ *   navy on beige   11.90    white on navy   13.62    red on white   7.55
+ *   navy on white   13.62    beige on navy   11.90    red on beige   6.59
+ *
+ * The freshness colours clear it too, on white and on beige:
+ *
+ *   fresh  6.44 / 5.63     aging  5.93 / 5.18     stale  7.55 / 6.59     unverified 5.55 / 4.85
+ *
+ * Two results constrain the palette, and both are encoded below:
+ *
+ *   red on navy      1.81  - fails every threshold. PLAN.md forbids red text on navy in dark
+ *                            mode; it is just as unreadable in the light theme wherever navy
+ *                            is a surface. Red is a fill or a border there, never text.
+ *   beige on white   1.14  - a beige surface on a white page has no visible edge, so any
+ *                            beige card MUST carry a border to exist as a component.
+ */
+
+:root {
+  /* Palette. Proportions are 60 beige / 30 navy / 10 red (PLAN.md). */
+  --ht-beige: #f5efe4;
+  --ht-navy: #2d2a4a;
+  --ht-red: #a51931;
+  --ht-white: #fff;
+
+  /* Roles. Components use these, not the raw palette, so a retheme is one block. */
+  --ht-bg: var(--ht-beige);
+  --ht-surface: var(--ht-white);
+  --ht-text: var(--ht-navy);
+  --ht-text-on-dark: var(--ht-beige);
+  /* The dark fill under --ht-text-on-dark: a selected chip, a filled button, a badge. */
+  --ht-surface-dark: var(--ht-navy);
+  --ht-accent: var(--ht-red);
+  --ht-accent-text-on: var(--ht-white);
+
+  /*
+   * Borders. --ht-border is a decorative hairline: it separates things that are already
+   * distinguishable, and at 1.4:1 it is not strong enough to be the only signal.
+   * --ht-border-strong is load-bearing, at 3.47:1 on white and 3.32:1 on beige, clearing
+   * the 3:1 that WCAG 1.4.11 asks of a boundary that identifies a component. Use it
+   * wherever the border is the only thing making a surface visible, which is every beige
+   * surface on a white page.
+   */
+  --ht-border: color-mix(in srgb, var(--ht-navy) 18%, transparent);
+  --ht-border-strong: color-mix(in srgb, var(--ht-navy) 56%, transparent);
+
+  /* Freshness (docs/CONTEXT.md): fresh < 90 days, aging 90-180, stale > 180, unverified. */
+  --ht-fresh: #1f6b4a;
+  --ht-aging: #8a5a00;
+  --ht-stale: var(--ht-red);
+  /* 62% navy measured 3.60:1 on beige and failed AA; 72% gives 5.55 on white, 4.85 on beige. */
+  --ht-unverified: color-mix(in srgb, var(--ht-navy) 72%, var(--ht-white));
+
+  /* Type. Families come from ui/fonts.ts, which sets these two variables. */
+  --ht-font-heading: var(--font-heading), "Space Grotesk", system-ui, sans-serif;
+  --ht-font-body: var(--font-body), Inter, system-ui, sans-serif;
+
+  --ht-text-xs: 0.75rem;
+  --ht-text-sm: 0.875rem;
+  --ht-text-base: 1rem;
+  --ht-text-lg: 1.125rem;
+  --ht-text-xl: 1.5rem;
+  --ht-text-2xl: 2rem;
+
+  /* Space, on a 4px step. */
+  --ht-space-1: 0.25rem;
+  --ht-space-2: 0.5rem;
+  --ht-space-3: 0.75rem;
+  --ht-space-4: 1rem;
+  --ht-space-6: 1.5rem;
+  --ht-space-8: 2rem;
+
+  /* Radius. Bento wants generous corners; the badge is a circle. */
+  --ht-radius-sm: 6px;
+  --ht-radius-md: 12px;
+  --ht-radius-lg: 20px;
+  --ht-radius-full: 999px;
+
+  --ht-shadow-card: 0 1px 2px rgb(45 42 74 / 6%), 0 8px 24px rgb(45 42 74 / 6%);
+
+  /* Motion. Light, and off when the visitor asks for that. */
+  --ht-motion-fast: 120ms;
+  --ht-motion-ease: cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ht-motion-fast: 0ms;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--ht-bg);
+  color: var(--ht-text);
+  font-family: var(--ht-font-body);
+  font-size: var(--ht-text-base);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--ht-font-heading);
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* One visible focus ring everywhere, so keyboard users are never guessing. */
+:focus-visible {
+  outline: 2px solid var(--ht-accent);
+  outline-offset: 2px;
+}
+
+/**
+ * Text for screen readers only. Used where a visual cue carries meaning that a digit or an
+ * icon does not say out loud, such as the number badge.
+ */
+.ht-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

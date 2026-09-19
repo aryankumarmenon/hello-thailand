@@ -1,0 +1,39 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ht-space-2);
+  padding: var(--ht-space-2) var(--ht-space-3);
+  border: 1px solid var(--ht-border-strong);
+  border-radius: var(--ht-radius-full);
+  background: var(--ht-surface);
+  color: var(--ht-text);
+  font: inherit;
+  font-size: var(--ht-text-sm);
+  cursor: pointer;
+  transition: background var(--ht-motion-fast) var(--ht-motion-ease);
+}
+
+.chip:hover:not(:disabled) {
+  background: var(--ht-bg);
+}
+
+/* Selected is navy, not red: red on navy is 1.81:1, so red can never label this state. */
+.selected {
+  background: var(--ht-surface-dark);
+  border-color: var(--ht-surface-dark);
+  color: var(--ht-text-on-dark);
+}
+
+.selected:hover:not(:disabled) {
+  background: var(--ht-surface-dark);
+}
+
+.chip:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.count {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}

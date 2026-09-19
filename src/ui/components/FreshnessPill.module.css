@@ -1,0 +1,25 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ht-space-1);
+  padding: var(--ht-space-1) var(--ht-space-2);
+  border: 1px solid currentcolor;
+  border-radius: var(--ht-radius-full);
+  background: var(--ht-surface);
+  font-size: var(--ht-text-xs);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.fresh {
+  color: var(--ht-fresh);
+}
+.aging {
+  color: var(--ht-aging);
+}
+.stale {
+  color: var(--ht-stale);
+}
+.unverified {
+  color: var(--ht-unverified);
+}
