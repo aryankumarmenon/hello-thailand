@@ -10,14 +10,14 @@ Last updated: 2026-09-19
 Scope set on 15 Sep 2026: ~29.5 hours of code by Aryan alone against a ~25-hour budget, so the M8 planner UI slips
 first (see `DECISIONS.md`). Rows are in build order.
 
-| #       | Milestone                                            | Owner | State                                                                                                                                                                                                                                                                              |
-| ------- | ---------------------------------------------------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| M0      | Scaffold                                             | Aryan | Done 16 Sep 2026: CI `check` green; production live at `hello-thailand-planner.vercel.app` on Node 22.x and pnpm 10.34.5 (read from the Vercel build logs); preview deploy verified on PR #3; `pnpm test:deploy` smoke-checks production                                           |
-| M1      | Data pipeline with planner fields and geocoding      | Aryan | Done 19 Sep 2026: merged as PR #8, commit `272ca8b`, CI `check` green on `main`. Schemas, importer, geocoder, content validator and privacy lint, reworked after the three review agents. 39 Bangkok places, 36 pinned. ADR 0009 written. Three unpinned places are under Blockers |
-| M2-lite | Tokens and the components M4 and M8 use, light theme | Aryan | Not started                                                                                                                                                                                                                                                                        |
-| M4      | Bangkok top-10 list and place pages                  | Aryan | Not started                                                                                                                                                                                                                                                                        |
-| M8      | Bangkok day planner with must-include places         | Aryan | Not started                                                                                                                                                                                                                                                                        |
-| M7-lite | Ship: production deploy, manual Lighthouse run       | Aryan | Not started                                                                                                                                                                                                                                                                        |
+| #       | Milestone                                            | Owner | State                                                                                                                                                                                                                                                                                         |
+| ------- | ---------------------------------------------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| M0      | Scaffold                                             | Aryan | Done 16 Sep 2026: CI `check` green; production live at `hello-thailand-planner.vercel.app` on Node 22.x and pnpm 10.34.5 (read from the Vercel build logs); preview deploy verified on PR #3; `pnpm test:deploy` smoke-checks production                                                      |
+| M1      | Data pipeline with planner fields and geocoding      | Aryan | Done 19 Sep 2026: merged as PR #8, commit `272ca8b`, CI `check` green on `main`. Schemas, importer, geocoder, content validator and privacy lint, reworked after the three review agents. 39 Bangkok places, 37 pinned. ADR 0009 and ADR 0011 written. Two unpinned places are under Blockers |
+| M2-lite | Tokens and the components M4 and M8 use, light theme | Aryan | Not started                                                                                                                                                                                                                                                                                   |
+| M4      | Bangkok top-10 list and place pages                  | Aryan | Not started                                                                                                                                                                                                                                                                                   |
+| M8      | Bangkok day planner with must-include places         | Aryan | Not started                                                                                                                                                                                                                                                                                   |
+| M7-lite | Ship: production deploy, manual Lighthouse run       | Aryan | Not started                                                                                                                                                                                                                                                                                   |
 
 Moved after the trip: landing (region map and chips), dark mode, trip inputs and estimate card, M5 photos, M6 Bangkok map, e2e and
 Lighthouse CI jobs.
@@ -34,8 +34,8 @@ Moved after the trip, with the estimate card: cost tiers, season calendar, Andam
 
 ## Next
 
-- Pin the three remaining Bangkok places, and settle the OpenStreetMap attribution and licence position,
-  on branch `m1-finish-geocoding`. Both are under Blockers.
+- M1's leftovers are done on `m1-finish-geocoding`: Moon Bar is pinned, the two places OpenStreetMap does
+  not hold are recorded as such, and ADR 0011 settles the licence.
 - Then M2-lite (tokens and the components M4 and M8 use) on branch `m2-lite-components`, then M4, M8 and
   M7-lite in that order.
 
@@ -68,13 +68,14 @@ blocker and several real defects, all now fixed:
 
 ## Blockers
 
-- **Three Bangkok places have no coordinates:** `likhit-kai-yang`, `moon-bar-banyan-tree` and
-  `roof-at-sala-rattanakosin`. OpenStreetMap has no record of the first two and answers wrongly for the third;
-  each carries a `skip` override saying so. Read the coordinates off a map and replace the skip with a pin.
-- **OpenStreetMap attribution and licence:** every coordinate is OSM-derived and `content/geocode-cache.json`
-  reproduces OSM `display_name` strings, but `content/LICENSE` reserves all rights over `content/`. OSM is ODbL:
-  attribution is required, and share-alike applies to a derived database. Decide the position before M6 puts a
-  map on the page. See ADR 0009.
+- **Two Bangkok places have no coordinates:** `likhit-kai-yang` and `roof-at-sala-rattanakosin`. Neither is in
+  OpenStreetMap; each `skip` override records what was searched on 19 Sep 2026 so the work is not repeated.
+  Read the coordinates off a map and replace the skip with a pin. `moon-bar-banyan-tree` is pinned now, on
+  Banyan Tree Bangkok, whose 61st-floor rooftop it is. 37 of 39 places are pinned.
+- **OpenStreetMap credit must render in M4 and M6:** ADR 0011 settled the licence — the cache and the
+  `coordinates` and `geocode` fields are ODbL, the researched content is not — and requires "© OpenStreetMap
+  contributors" to be visible on any page that shows a coordinate. `content/LICENSE` carries it today. The place
+  page in M4 and the map in M6 MUST render it, and the M6 tile source adds its own credit on top.
 - **Branch protection:** `main` is not protected. Set it in the GitHub repository settings: require a pull
   request, require the `check` job with the branch up to date, and require linear history.
 - **Vercel connector:** it cannot see the `hello-thailand` Vercel scope, so Claude cannot read build logs or deployments.
