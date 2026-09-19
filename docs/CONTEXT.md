@@ -22,6 +22,7 @@ One term, one meaning. Code, content and docs use these words.
 | Travel minutes               | The estimated time to go between two places; the cost the day planner adds between stops.                                                                                            |
 | Opening hours                | When a place is open, as ranges per weekday, or a day written as closed. A day with no entry was never researched, which is not the same as closed.                                  |
 | Geocode override             | A hand-set coordinate for a place OpenStreetMap places wrongly or not at all. Always wins over a looked-up pin, and may instead say the place stays unpinned.                        |
+| OpenStreetMap credit         | The exact string `© OpenStreetMap contributors`, shown on any page that displays a coordinate. Required by ADR 0011. Use this wording, not a paraphrase.                             |
 | Day plan                     | An ordered route of places for one day, in one or two neighbourhoods, built from scores, travel minutes and must-include places. Not a multi-day itinerary.                          |
 | Must-include place           | A site place the visitor requires in a day plan. The planner builds the route around it, or lists it under "Does not fit today" with the reason.                                     |
 | Source (of a recommendation) | `editorial` (written and checked by the site) or `community` (added by users, later).                                                                                                |

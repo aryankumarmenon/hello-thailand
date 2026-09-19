@@ -59,14 +59,14 @@ when one is decided, move it into its section with the date.
 
 ## Content, photos, design, hosting
 
-| Decision     | Answer                                                             | Why                                                                                  |
-| ------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| Content rule | Own words; price only with source and date; no guidebook text      | Trust is the product; copyright                                                      |
-| Photos       | Licensed sources only, collected by script with licence and credit | India's Copyright Act has no pet-project exemption; a takedown could remove the site |
-| Look         | Gen-Z bento, Thai flag palette (beige/navy/red)                    | Aryan's direction; red as accent avoids a government look                            |
-| Fonts        | Fraunces or Space Grotesk + Inter                                  | Editorial headings, readable body                                                    |
-| Hosting      | Vercel Hobby, non-commercial                                       | Free                                                                                 |
-| Repo         | Public; code MIT, content all rights reserved                      | Portfolio visibility without giving away the research                                |
+| Decision     | Answer                                                                                             | Why                                                                                  |
+| ------------ | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Content rule | Own words; price only with source and date; no guidebook text                                      | Trust is the product; copyright                                                      |
+| Photos       | Licensed sources only, collected by script with licence and credit                                 | India's Copyright Act has no pet-project exemption; a takedown could remove the site |
+| Look         | Gen-Z bento, Thai flag palette (beige/navy/red)                                                    | Aryan's direction; red as accent avoids a government look                            |
+| Fonts        | Fraunces or Space Grotesk + Inter                                                                  | Editorial headings, readable body                                                    |
+| Hosting      | Vercel Hobby, non-commercial                                                                       | Free                                                                                 |
+| Repo         | Public; code MIT, content all rights reserved except OSM-derived geodata, which is ODbL (ADR 0011) | Portfolio visibility without giving away the research                                |
 
 ## Open — decide by the listed date
 

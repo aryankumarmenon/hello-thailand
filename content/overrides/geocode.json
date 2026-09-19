@@ -16,15 +16,16 @@
   },
   "likhit-kai-yang": {
     "skip": true,
-    "note": "OSM has no record under any query tried. Needs coordinates read off a map."
+    "note": "Not in OpenStreetMap. Re-checked 2026-09-19: Nominatim finds nothing for the Thai name, and an Overpass search of every restaurant, fast food and cafe within 500 m of Rajadamnern Stadium returns twelve venues, none of them this one. Needs coordinates read off a map."
   },
   "moon-bar-banyan-tree": {
-    "skip": true,
-    "note": "OSM matches a different Moon Bar in Chatuchak, about 12 km from Banyan Tree on Sathon Tai. Banyan Tree Bangkok is not in OSM under any query tried."
+    "lat": 13.7235907,
+    "lng": 100.5397921,
+    "note": "Pinned on Banyan Tree Bangkok, OSM node 4420339595, matched \"Banyan Tree Bangkok, 21, Soi Suan Phlu 6, Suan Phlu, Thung Maha Mek Subdistrict, Sathon District, Bangkok, 10120, Thailand\" from Nominatim on 2026-09-19. Moon Bar is the hotel's rooftop bar, so the hotel is the pin; the venue-to-hotel relationship still needs a public source when M4 writes this page. The earlier run searched the bar name, which matches an unrelated Moon Bar in Chatuchak about 12 km away; the hotel name returns this node as the only result."
   },
   "roof-at-sala-rattanakosin": {
     "skip": true,
-    "note": "OSM returns the Thailand Cultural Centre, then Bangkok City Hall. The venue faces Wat Arun across the river and needs coordinates read off a map."
+    "note": "Not in OpenStreetMap. Re-checked 2026-09-19: the name returns Wat Pho pavilions and Rattanakosin Island, and an Overpass search of every tourism feature within 350 m of Tha Tien Pier lists the neighbouring hotels but not this one. Three unnamed hotel nodes stand nearby and cannot be told apart. The place record's address is only \"Sala Rattanakosin Bangkok, Thailand\", with no street number to search on. Needs coordinates read off a map."
   },
   "suvarnabhumi-airport-bkk": {
     "lat": 13.6818767,
