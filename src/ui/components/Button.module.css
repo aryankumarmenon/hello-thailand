@@ -33,7 +33,7 @@
 
 /* Beige on navy is 11.90:1. */
 .secondary {
-  background: var(--ht-navy);
+  background: var(--ht-surface-dark);
   color: var(--ht-text-on-dark);
 }
 

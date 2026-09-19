@@ -1,6 +1,6 @@
 /*
  * A beige card on a white page measures 1.14:1, which is no edge at all, so the border is
- * what makes this component exist. It is --ht-border-strong (3.29:1) rather than the
+ * what makes this component exist. It is --ht-border-strong (3.47:1) rather than the
  * decorative hairline. See ui/tokens.css.
  */
 .card {

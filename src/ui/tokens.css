@@ -33,13 +33,15 @@
   --ht-surface: var(--ht-white);
   --ht-text: var(--ht-navy);
   --ht-text-on-dark: var(--ht-beige);
+  /* The dark fill under --ht-text-on-dark: a selected chip, a filled button, a badge. */
+  --ht-surface-dark: var(--ht-navy);
   --ht-accent: var(--ht-red);
   --ht-accent-text-on: var(--ht-white);
 
   /*
    * Borders. --ht-border is a decorative hairline: it separates things that are already
    * distinguishable, and at 1.4:1 it is not strong enough to be the only signal.
-   * --ht-border-strong is load-bearing, at 3.29:1 on white and 3.15:1 on beige, clearing
+   * --ht-border-strong is load-bearing, at 3.47:1 on white and 3.32:1 on beige, clearing
    * the 3:1 that WCAG 1.4.11 asks of a boundary that identifies a component. Use it
    * wherever the border is the only thing making a surface visible, which is every beige
    * surface on a white page.

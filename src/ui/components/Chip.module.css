@@ -19,13 +19,13 @@
 
 /* Selected is navy, not red: red on navy is 1.81:1, so red can never label this state. */
 .selected {
-  background: var(--ht-navy);
-  border-color: var(--ht-navy);
+  background: var(--ht-surface-dark);
+  border-color: var(--ht-surface-dark);
   color: var(--ht-text-on-dark);
 }
 
 .selected:hover:not(:disabled) {
-  background: var(--ht-navy);
+  background: var(--ht-surface-dark);
 }
 
 .chip:disabled {

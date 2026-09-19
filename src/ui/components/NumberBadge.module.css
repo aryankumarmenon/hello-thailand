@@ -16,6 +16,6 @@
 }
 
 .muted {
-  background: var(--ht-navy);
+  background: var(--ht-surface-dark);
   color: var(--ht-text-on-dark);
 }

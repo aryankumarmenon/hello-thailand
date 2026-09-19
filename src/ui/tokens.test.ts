@@ -83,58 +83,76 @@ function token(name: string, over: Rgb = [255, 255, 255]): Rgb {
 const AA_BODY = 4.5;
 const NON_TEXT = 3; // WCAG 1.4.11, for a boundary that identifies a component.
 
-describe("colour tokens", () => {
-  const beige = token("ht-beige");
-  const navy = token("ht-navy");
-  const white = token("ht-white");
-  const red = token("ht-red");
+/** Ratios rounded to two places, exactly as the comments in `tokens.css` quote them. */
+function quoted(fg: Rgb, bg: Rgb): number {
+  return Number(contrast(fg, bg).toFixed(2));
+}
+
+describe("colour roles", () => {
+  // Resolved through the role layer, because that is what every component consumes. A test
+  // that read the palette directly would stay green while a repointed role broke the page.
+  const bg = token("ht-bg");
+  const surface = token("ht-surface");
+  const surfaceDark = token("ht-surface-dark");
+  const text = token("ht-text");
+  const textOnDark = token("ht-text-on-dark");
+  const accent = token("ht-accent");
+  const accentTextOn = token("ht-accent-text-on");
 
   it.each([
-    ["navy text on beige", navy, beige],
-    ["navy text on white", navy, white],
-    ["white text on navy", white, navy],
-    ["beige text on navy", beige, navy],
-    ["white text on red", white, red],
-    ["red text on beige", red, beige],
-    ["red text on white", red, white],
-  ])("%s clears AA for body text", (_label, fg, bg) => {
-    expect(contrast(fg as Rgb, bg as Rgb)).toBeGreaterThanOrEqual(AA_BODY);
+    ["--ht-text on the page", text, bg],
+    ["--ht-text on a surface", text, surface],
+    ["--ht-text-on-dark on --ht-surface-dark", textOnDark, surfaceDark],
+    ["--ht-accent-text-on on --ht-accent", accentTextOn, accent],
+    ["--ht-accent on the page", accent, bg],
+    ["--ht-accent on a surface", accent, surface],
+  ])("%s clears AA for body text", (_label, fg, over) => {
+    expect(contrast(fg as Rgb, over as Rgb)).toBeGreaterThanOrEqual(AA_BODY);
   });
 
-  it("red on navy is unreadable, which is why no component pairs them", () => {
-    // Guards the rule rather than the colour: if someone lightens red until this passes,
-    // the test says so and the Chip, Button and NumberBadge comments can be revisited.
-    expect(contrast(red, navy)).toBeLessThan(NON_TEXT);
+  it("the accent is unreadable on the dark surface, which is why no component pairs them", () => {
+    // Guards the rule rather than the colour: if someone lightens the accent until this
+    // passes, the test says so and the Chip, Button and NumberBadge comments can be revisited.
+    expect(contrast(accent, surfaceDark)).toBeLessThan(NON_TEXT);
   });
 
-  it("a beige surface on white has no edge of its own, so it needs a border", () => {
-    expect(contrast(beige, white)).toBeLessThan(NON_TEXT);
+  it("the page colour on a surface has no edge of its own, so a card needs a border", () => {
+    expect(contrast(bg, surface)).toBeLessThan(NON_TEXT);
   });
 });
 
 describe("freshness tokens", () => {
-  const beige = token("ht-beige");
-  const white = token("ht-white");
+  const bg = token("ht-bg");
+  const surface = token("ht-surface");
 
-  it.each(["ht-fresh", "ht-aging", "ht-stale", "ht-unverified"])(
-    "--%s clears AA on both page backgrounds",
-    (name) => {
-      expect(contrast(token(name, white), white)).toBeGreaterThanOrEqual(AA_BODY);
-      expect(contrast(token(name, beige), beige)).toBeGreaterThanOrEqual(AA_BODY);
-    },
-  );
+  // The pairs quoted in the tokens.css header. Asserting the number, not just the threshold,
+  // is what stops the comment drifting away from the value that ships.
+  it.each([
+    ["ht-fresh", 6.44, 5.63],
+    ["ht-aging", 5.93, 5.18],
+    ["ht-stale", 7.55, 6.59],
+    ["ht-unverified", 5.55, 4.85],
+  ])("--%s clears AA on both page backgrounds, at the documented ratio", (name, on, over) => {
+    expect(quoted(token(name as string, surface), surface)).toBe(on);
+    expect(quoted(token(name as string, bg), bg)).toBe(over);
+    expect(contrast(token(name as string, surface), surface)).toBeGreaterThanOrEqual(AA_BODY);
+    expect(contrast(token(name as string, bg), bg)).toBeGreaterThanOrEqual(AA_BODY);
+  });
 });
 
 describe("border tokens", () => {
-  const beige = token("ht-beige");
-  const white = token("ht-white");
+  const bg = token("ht-bg");
+  const surface = token("ht-surface");
 
   it("--ht-border-strong is load-bearing and clears the 3:1 non-text threshold", () => {
-    expect(contrast(token("ht-border-strong", white), white)).toBeGreaterThanOrEqual(NON_TEXT);
-    expect(contrast(token("ht-border-strong", beige), beige)).toBeGreaterThanOrEqual(NON_TEXT);
+    expect(contrast(token("ht-border-strong", surface), surface)).toBeGreaterThanOrEqual(NON_TEXT);
+    expect(contrast(token("ht-border-strong", bg), bg)).toBeGreaterThanOrEqual(NON_TEXT);
+    // tokens.css and Card.module.css both quote these two numbers.
+    expect(quoted(token("ht-border-strong", surface), surface)).toBe(3.47);
+    expect(quoted(token("ht-border-strong", bg), bg)).toBe(3.32);
   });
 
   it("--ht-border is decorative, and must never be the only signal", () => {
-    expect(contrast(token("ht-border", white), white)).toBeLessThan(NON_TEXT);
+    expect(contrast(token("ht-border", surface), surface)).toBeLessThan(NON_TEXT);
   });
 });
