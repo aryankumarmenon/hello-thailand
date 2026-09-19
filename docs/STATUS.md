@@ -71,7 +71,7 @@ blocker and several real defects, all now fixed:
 - **Two Bangkok places have no coordinates:** `likhit-kai-yang` and `roof-at-sala-rattanakosin`. Neither is in
   OpenStreetMap; each `skip` override records what was searched on 19 Sep 2026 so the work is not repeated.
   Read the coordinates off a map and replace the skip with a pin. `moon-bar-banyan-tree` is pinned now, on
-  Banyan Tree Bangkok, whose 61st-floor rooftop it is. 37 of 39 places are pinned.
+  Banyan Tree Bangkok, matched by hotel name in OpenStreetMap. 37 of 39 places are pinned.
 - **OpenStreetMap credit must render in M4 and M6:** ADR 0011 settled the licence — the cache and the
   `coordinates` and `geocode` fields are ODbL, the researched content is not — and requires "© OpenStreetMap
   contributors" to be visible on any page that shows a coordinate. `content/LICENSE` carries it today. The place

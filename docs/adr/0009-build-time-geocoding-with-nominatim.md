@@ -49,8 +49,9 @@ results. Clients that repeat a query are classified as faulty and blocked.
   a diff.
 - **Settled in ADR 0011:** OpenStreetMap data is ODbL, which requires attribution and applies
   share-alike to a derived database, while ADR 0002 reserved all rights over everything in `content/`.
-  ADR 0011 splits the licence by field — the cache and the `coordinates` and `geocode` fields are ODbL
-  and credited, the researched content is not — and requires the credit to be visible on any page that
-  shows a coordinate.
+  ADR 0011 splits the licence by field — the coordinates and the `matched` names OpenStreetMap
+  returned are ODbL and credited, while `geocode.query` and the cache keys stay reserved, because a
+  query is our own name and address rather than an OSM answer — and requires the credit to be visible
+  on any page that shows a coordinate.
 - Rejected: a paid geocoder (cost); geocoding in the browser or at build time (a runtime dependency
   on a service whose policy forbids exactly that use).

@@ -31,11 +31,17 @@ cache grows with it, and coordinates are not what makes this site worth reading.
 
 The licence is split by **field**, not by directory.
 
-- **ODbL 1.0, credited to OpenStreetMap contributors:** `content/geocode-cache.json` in full; the
-  `coordinates` and `geocode` fields of every place file; and in `content/overrides/geocode.json`, the
-  `lat` and `lng` of every entry together with the OpenStreetMap place names quoted in its notes. The
-  override file is easy to miss because it is hand-edited, but a hand-copied coordinate is still an
-  extract.
+- **ODbL 1.0, credited to OpenStreetMap contributors:** the OpenStreetMap answers, wherever they sit.
+  That is the coordinate and the `matched` name in each `content/geocode-cache.json` entry; the
+  `coordinates` field and `geocode.matched` and `geocode.fetchedOn` on every place file; and in
+  `content/overrides/geocode.json`, the `lat` and `lng` of every entry with the OpenStreetMap place
+  names quoted in its notes. The override file is easy to miss because it is hand-edited, but a
+  hand-copied coordinate is still an extract.
+- **Not granted, although it sits in the same objects:** `geocode.query`, and the query strings that
+  key the cache. A query is our place name joined to its address — researched content that came from
+  the CSV, not an answer that came from OpenStreetMap. The grant has to be drawn at the field, not at
+  the object, or it would publish the whole place-and-address list under share-alike while the next
+  clause reserves it.
 - **All rights reserved, as ADR 0002 says:** everything else in `content/` — names, topics, guide text,
   traveller notes, prices and their sources, cost ranges, and the editorial planner fields.
 

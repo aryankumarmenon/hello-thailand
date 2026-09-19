@@ -6,10 +6,17 @@ ADR 0002 sets the default.
 The following are derived from OpenStreetMap and are made available under the Open Database License
 1.0 (https://opendatacommons.org/licenses/odbl/1-0/):
 
-- `geocode-cache.json` in full
-- the `coordinates` and `geocode` fields of every file under `places/`
+- in `geocode-cache.json`, the OpenStreetMap results it caches: each entry's coordinate and its
+  `matched` name. The keys of that file are our own query strings and are **not** granted; see below
+- the `coordinates` field of every file under `places/`, and within `geocode`, the `matched` and
+  `fetchedOn` fields
 - in `overrides/geocode.json`, the `lat` and `lng` of every entry, and the OpenStreetMap place
   names quoted inside its `note` text
+
+Deliberately **not** granted: `geocode.query`, and the query strings that key
+`geocode-cache.json`. A query is our place name joined to its address, which is researched content,
+not an OpenStreetMap answer. Granting it would publish the place-and-address list under a
+share-alike licence while the section below reserves that same list.
 
 © OpenStreetMap contributors. Data available under the Open Database License.
 
