@@ -14,7 +14,7 @@ first (see `DECISIONS.md`). Rows are in build order.
 | ------- | ---------------------------------------------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | M0      | Scaffold                                             | Aryan | Done 16 Sep 2026: CI `check` green; production live at `hello-thailand-planner.vercel.app` on Node 22.x and pnpm 10.34.5 (read from the Vercel build logs); preview deploy verified on PR #3; `pnpm test:deploy` smoke-checks production                                                      |
 | M1      | Data pipeline with planner fields and geocoding      | Aryan | Done 19 Sep 2026: merged as PR #8, commit `272ca8b`, CI `check` green on `main`. Schemas, importer, geocoder, content validator and privacy lint, reworked after the three review agents. 39 Bangkok places, 37 pinned. ADR 0009 and ADR 0011 written. Two unpinned places are under Blockers |
-| M2-lite | Tokens and the components M4 and M8 use, light theme | Aryan | Not started                                                                                                                                                                                                                                                                                   |
+| M2-lite | Tokens and the components M4 and M8 use, light theme | Aryan | Done 19 Sep 2026 on `m2-lite-components`. `ui/tokens.css`, `ui/fonts.ts`, and Button, Card, Chip, NumberBadge, FreshnessPill, Header. AA contrast is tested, not asserted: `ui/tokens.test.ts` reads the shipped CSS and computes every ratio (15 tests, 132 total)                           |
 | M4      | Bangkok top-10 list and place pages                  | Aryan | Not started                                                                                                                                                                                                                                                                                   |
 | M8      | Bangkok day planner with must-include places         | Aryan | Not started                                                                                                                                                                                                                                                                                   |
 | M7-lite | Ship: production deploy, manual Lighthouse run       | Aryan | Not started                                                                                                                                                                                                                                                                                   |
@@ -34,10 +34,14 @@ Moved after the trip, with the estimate card: cost tiers, season calendar, Andam
 
 ## Next
 
-- M1's leftovers are done on `m1-finish-geocoding`: Moon Bar is pinned, the two places OpenStreetMap does
-  not hold are recorded as such, and ADR 0011 settles the licence.
-- Then M2-lite (tokens and the components M4 and M8 use) on branch `m2-lite-components`, then M4, M8 and
-  M7-lite in that order.
+- M1's leftovers are done on `m1-finish-geocoding`, and M2-lite on `m2-lite-components`.
+- Next is M4 (Bangkok top-10 and place pages) on `m4-bangkok-pages`, then M8, then M7-lite.
+- **M4 must also do three things that fell out of earlier work.** Render the
+  "© OpenStreetMap contributors" credit, required by ADR 0011 and worded in `CONTEXT.md`. Close the
+  `neighbourhood` enum, which the `Place` schema says arrives with M4. And decide how a permanently
+  closed venue is represented: `studio-lam` shut at the end of February 2026, confirmed against the
+  Bangkok Post, Resident Advisor and Time Out, and nothing in the schema can say so, so a top-10 or a
+  day plan would happily feature it.
 
 ### What M1 built
 
@@ -68,6 +72,13 @@ blocker and several real defects, all now fixed:
 
 ## Blockers
 
+- **No place has any editorial field.** All 39 carry only the CSV core and a coordinate: zero
+  `neighbourhood`, `popularity`, `timeNeededMinutes`, `openingHours`, `summary`, and no verified price.
+  M4 ranks a top-10 and M8 scores by popularity × interest and groups by neighbourhood, so both need
+  this. Agreed on 19 Sep 2026: M4 sets `neighbourhood` (derived from the coordinates) and `popularity`
+  (an editorial judgement, needing no source). Opening hours, prices and summaries stay with the content
+  track, because each is a factual claim needing a source URL and `checkedOn`. `planDay` carries a
+  documented default stop length rather than inventing `timeNeededMinutes` per place.
 - **Two Bangkok places have no coordinates:** `likhit-kai-yang` and `roof-at-sala-rattanakosin`. Neither is in
   OpenStreetMap; each `skip` override records what was searched on 19 Sep 2026 so the work is not repeated.
   Read the coordinates off a map and replace the skip with a pin. `moon-bar-banyan-tree` is pinned now, on
