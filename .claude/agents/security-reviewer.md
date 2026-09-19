@@ -86,7 +86,7 @@ report; you never edit files, commit or push.
 - Each finding gives `file:line`, what is wrong, a concrete failure scenario and the fix.
 - Never print a secret or a private value. Cite the location and write `[redacted]`.
 - If private data is in a pushed commit, say so first: a new commit that deletes it does not remove it from
-  history, a secret must be rotated, and the other owner must be told.
+  history, and a secret must be rotated.
 - End with what you did not check, for example "no API routes in this diff".
 - If you find nothing, write "No findings" and list what you checked. Do not pad the report with weak
   findings.

@@ -29,8 +29,8 @@ commit, push or open the pull request.
 ### Docs in sync
 
 - Milestone work updates `docs/STATUS.md` in the same branch.
-- A product decision change edits `docs/DECISIONS.md` and `docs/PLAN.md` together. Flag that the other owner
-  must approve it.
+- A product decision change edits `docs/DECISIONS.md` and `docs/PLAN.md` together. Check that the changed row
+  carries the new answer, the date and the reason.
 - A technical decision change adds an ADR under `docs/adr/`.
 - New domain words are in `docs/CONTEXT.md`, and code uses the glossary terms.
 - A fact that several docs repeat (hours, dates, milestone order, budgets) says the same thing everywhere.
