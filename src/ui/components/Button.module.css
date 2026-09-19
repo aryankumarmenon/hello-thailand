@@ -1,0 +1,45 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ht-space-2);
+  min-height: 2.75rem; /* 44px: a comfortable touch target on the phone-first layout. */
+  padding: var(--ht-space-2) var(--ht-space-4);
+  border: 1px solid transparent;
+  border-radius: var(--ht-radius-md);
+  font-family: var(--ht-font-heading);
+  font-size: var(--ht-text-base);
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: filter var(--ht-motion-fast) var(--ht-motion-ease);
+}
+
+.button:hover:not(:disabled) {
+  filter: brightness(0.94);
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  filter: none;
+}
+
+/* White on red is 7.55:1. */
+.primary {
+  background: var(--ht-accent);
+  color: var(--ht-accent-text-on);
+}
+
+/* Beige on navy is 11.90:1. */
+.secondary {
+  background: var(--ht-navy);
+  color: var(--ht-text-on-dark);
+}
+
+/* Navy on the page is 11.90:1 on beige, 13.62:1 on white. */
+.quiet {
+  background: transparent;
+  border-color: var(--ht-border-strong);
+  color: var(--ht-text);
+}

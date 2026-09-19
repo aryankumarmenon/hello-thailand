@@ -1,0 +1,21 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75rem;
+  height: 1.75rem;
+  padding: 0 var(--ht-space-1);
+  border-radius: var(--ht-radius-full);
+  background: var(--ht-accent);
+  color: var(--ht-accent-text-on);
+  font-family: var(--ht-font-heading);
+  font-size: var(--ht-text-sm);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.muted {
+  background: var(--ht-navy);
+  color: var(--ht-text-on-dark);
+}
