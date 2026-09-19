@@ -1,8 +1,24 @@
+This directory holds two kinds of data under two different licences. ADR 0011 explains the split;
+ADR 0002 sets the default.
+
+## OpenStreetMap-derived geodata — ODbL 1.0
+
+The following are derived from OpenStreetMap and are made available under the Open Database License
+1.0 (https://opendatacommons.org/licenses/odbl/1-0/):
+
+- `geocode-cache.json` in full
+- the `coordinates` and `geocode` fields of every file under `places/`
+
+© OpenStreetMap contributors. Data available under the Open Database License.
+
+## Everything else — all rights reserved
+
 Copyright (c) 2026 Aryan Kumar. All rights reserved.
 
-The place data, guide text, cost ranges and other content in this `content/` directory are not
-covered by the MIT licence that applies to the code. You may not copy, republish or redistribute
-this content without written permission.
+The place names, guide text, traveller notes, prices and their sources, cost ranges and editorial
+planner fields in this `content/` directory are not covered by the MIT licence that applies to the
+code, and are not covered by the ODbL grant above. You may not copy, republish or redistribute this
+content without written permission.
 
-Photos referenced by this content belong to their respective authors and are used under the
-licence recorded next to each photo.
+Photos referenced by this content belong to their respective authors and are used under the licence
+recorded next to each photo.

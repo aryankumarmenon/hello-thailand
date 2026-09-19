@@ -47,10 +47,10 @@ results. Clients that repeat a query are classified as faulty and blocked.
   a human job.
 - The committed cache grows with the place list. At about 130 places it is small enough to read in
   a diff.
-- **Open, and not decided here:** OpenStreetMap data is ODbL, which requires attribution and applies
-  share-alike to a derived database, while `content/LICENSE` currently reserves all rights over
-  everything in `content/`. Every coordinate on the site is OSM-derived and the cache reproduces OSM
-  `display_name` strings. The site must attribute OpenStreetMap where coordinates are shown, and the
-  licence position for the geodata needs settling before M6 puts a map on the page.
+- **Settled in ADR 0011:** OpenStreetMap data is ODbL, which requires attribution and applies
+  share-alike to a derived database, while ADR 0002 reserved all rights over everything in `content/`.
+  ADR 0011 splits the licence by field — the cache and the `coordinates` and `geocode` fields are ODbL
+  and credited, the researched content is not — and requires the credit to be visible on any page that
+  shows a coordinate.
 - Rejected: a paid geocoder (cost); geocoding in the browser or at build time (a runtime dependency
   on a service whose policy forbids exactly that use).

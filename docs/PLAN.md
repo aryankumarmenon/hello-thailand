@@ -148,7 +148,8 @@ docs/         PLAN STATUS DECISIONS RESEARCH CONTEXT WORKFLOW adr/
   `exactOptionalPropertyTypes`, Vitest 5, Playwright, GitHub Actions, Dependabot.
 - Planned ADRs: 0004 static-first and portability; 0005 THB prices and client-side freshness; 0006 FX fallback
   chain; 0007 AI module and one `MODEL_ID`; 0008 AI guardrails; 0010 day planner scoring and route. ADR 0009
-  covers build-time geocoding (written in M1); the map library and tile source are still open, and belong with M6.
+  covers build-time geocoding and ADR 0011 the ODbL split for OSM-derived geodata (both written in M1); the map
+  library and tile source are still open, and belong with M6.
 
 ## Milestones
 
