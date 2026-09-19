@@ -1,0 +1,20 @@
+{
+  "id": "lak-meuang-city-pillar",
+  "name": "Lak Meuang City Pillar",
+  "city": "bangkok",
+  "topics": ["sight"],
+  "address": "Lak Mueang, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7524013,
+    "lng": 100.4947493
+  },
+  "geocode": {
+    "query": "Lak Mueang, Bangkok, Thailand",
+    "matched": "Lak Mueang Road, Tha Chang, Phra Borom Maha Ratchawang Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

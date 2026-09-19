@@ -1,0 +1,11 @@
+{
+  "id": "moon-bar-banyan-tree",
+  "name": "Moon Bar (Banyan Tree)",
+  "city": "bangkok",
+  "topics": ["drink"],
+  "address": "Moon Bar Banyan Tree, Bangkok, Thailand",
+  "source": "editorial",
+  "price": {
+    "status": "unverified"
+  }
+}

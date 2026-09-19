@@ -1,0 +1,20 @@
+{
+  "id": "erawan-shrine",
+  "name": "Erawan Shrine",
+  "city": "bangkok",
+  "topics": ["sight"],
+  "address": "Erawan Shrine, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7443205,
+    "lng": 100.5404211
+  },
+  "geocode": {
+    "query": "Erawan Shrine, Bangkok, Thailand",
+    "matched": "Erawan Shrine, Phloen Chit Road, Ratchaprasong, Lumphini Subdistrict, Pathum Wan District, Bangkok, 10330, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

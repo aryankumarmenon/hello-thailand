@@ -1,0 +1,20 @@
+{
+  "id": "hemlock",
+  "name": "Hemlock",
+  "city": "bangkok",
+  "topics": ["eat"],
+  "address": "Hemlock Restaurant, Th Phra Athit, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7619476,
+    "lng": 100.4934922
+  },
+  "geocode": {
+    "query": "Hemlock Restaurant, Th Phra Athit, Bangkok, Thailand",
+    "matched": "Hemlock, Phra Athit Road, Phra Athit, Chana Songkhram Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

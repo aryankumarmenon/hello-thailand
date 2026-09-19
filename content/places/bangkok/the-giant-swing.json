@@ -1,0 +1,20 @@
+{
+  "id": "the-giant-swing",
+  "name": "The Giant Swing",
+  "city": "bangkok",
+  "topics": ["sight"],
+  "address": "Giant Swing Sao Ching Cha, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7523605,
+    "lng": 100.5006538
+  },
+  "geocode": {
+    "query": "The Giant Swing, Bangkok, Thailand",
+    "matched": "เทวาลัยพระศิวลึงค์, Dinso Road, Bot Phram Community, Sao Chingcha Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

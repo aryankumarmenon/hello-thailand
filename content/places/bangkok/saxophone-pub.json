@@ -1,0 +1,20 @@
+{
+  "id": "saxophone-pub",
+  "name": "Saxophone Pub",
+  "city": "bangkok",
+  "topics": ["live-music"],
+  "address": "Saxophone Pub, Victory Monument, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7636293,
+    "lng": 100.5380821
+  },
+  "geocode": {
+    "query": "Saxophone Pub, Bangkok, Thailand",
+    "matched": "Saxophone Pub and Restaurant, 3/8, Soi Ratchawithi 11, Thanon Phaya Thai Subdistrict, Ratchathewi District, Bangkok, 10400, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

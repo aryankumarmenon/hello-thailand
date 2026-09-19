@@ -1,0 +1,20 @@
+{
+  "id": "jay-fai",
+  "name": "Jay Fai",
+  "city": "bangkok",
+  "topics": ["eat"],
+  "address": "Jay Fai, Th Mahachai, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7525335,
+    "lng": 100.5047365
+  },
+  "geocode": {
+    "query": "Jay Fai, Bangkok, Thailand",
+    "matched": "Raan Jay Fai, Maha Chai Road, ชุมชนวังกรมพระสมมตอมรพันธุ์, Samran Rat Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

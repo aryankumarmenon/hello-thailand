@@ -1,0 +1,20 @@
+{
+  "id": "rca-route-66-onyx",
+  "name": "RCA (Route 66 / Onyx)",
+  "city": "bangkok",
+  "topics": ["nightlife"],
+  "address": "RCA Royal City Avenue, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7511319,
+    "lng": 100.5758157
+  },
+  "geocode": {
+    "query": "RCA, Bangkok, Thailand",
+    "matched": "RCA, Bang Kapi Subdistrict, Huai Khwang District, Bangkok, 10310, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

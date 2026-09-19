@@ -1,0 +1,15 @@
+{
+  "id": "ban-baat-monk-s-bowl-village",
+  "name": "Ban Baat Monk's Bowl Village",
+  "city": "bangkok",
+  "topics": ["sight"],
+  "address": "Ban Baat Monks Bowl Village, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7510414,
+    "lng": 100.5057734
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

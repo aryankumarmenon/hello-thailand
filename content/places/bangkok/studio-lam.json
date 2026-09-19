@@ -1,0 +1,20 @@
+{
+  "id": "studio-lam",
+  "name": "Studio Lam",
+  "city": "bangkok",
+  "topics": ["nightlife"],
+  "address": "Studio Lam, Sukhumvit 51, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7263038,
+    "lng": 100.5764776
+  },
+  "geocode": {
+    "query": "Studio Lam, Sukhumvit 51, Bangkok, Thailand",
+    "matched": "Studio Lam, Soi Sukhumvit 51, Khlong Tan Nuea Subdistrict, Vadhana District, Bangkok, 10110, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

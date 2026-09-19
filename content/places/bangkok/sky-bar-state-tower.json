@@ -1,0 +1,20 @@
+{
+  "id": "sky-bar-state-tower",
+  "name": "Sky Bar (State Tower)",
+  "city": "bangkok",
+  "topics": ["drink"],
+  "address": "Sky Bar Lebua State Tower, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7212222,
+    "lng": 100.5170726
+  },
+  "geocode": {
+    "query": "Sky Bar, Bangkok, Thailand",
+    "matched": "Sky Bar, Si Wiang Road, Si Lom Subdistrict, Bang Rak District, Bangkok, 10500, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

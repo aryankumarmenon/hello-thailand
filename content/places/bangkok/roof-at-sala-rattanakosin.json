@@ -1,0 +1,11 @@
+{
+  "id": "roof-at-sala-rattanakosin",
+  "name": "Roof at Sala Rattanakosin",
+  "city": "bangkok",
+  "topics": ["drink"],
+  "address": "Sala Rattanakosin Bangkok, Thailand",
+  "source": "editorial",
+  "price": {
+    "status": "unverified"
+  }
+}

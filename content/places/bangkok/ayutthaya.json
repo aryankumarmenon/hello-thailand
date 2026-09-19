@@ -1,0 +1,20 @@
+{
+  "id": "ayutthaya",
+  "name": "Ayutthaya",
+  "city": "bangkok",
+  "topics": ["day-trip"],
+  "address": "Ayutthaya Historical Park, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 14.3535461,
+    "lng": 100.5622548
+  },
+  "geocode": {
+    "query": "Ayutthaya Historical Park, Thailand",
+    "matched": "Ayutthaya Historical Park, Pratu Chai Subdistrict, Phra Nakhon Si Ayutthaya City Municipality, Phra Nakhon Si Ayutthaya District, Phra Nakhon Si Ayutthaya Province, 13000, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

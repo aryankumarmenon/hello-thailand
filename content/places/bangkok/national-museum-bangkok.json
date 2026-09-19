@@ -1,0 +1,20 @@
+{
+  "id": "national-museum-bangkok",
+  "name": "National Museum Bangkok",
+  "city": "bangkok",
+  "topics": ["museum"],
+  "address": "National Museum Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.758177,
+    "lng": 100.4914819
+  },
+  "geocode": {
+    "query": "National Museum Bangkok, Thailand",
+    "matched": "Bangkok National Museum, Na Phra That Road, Tha Pra Chan, Phra Borom Maha Ratchawang Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

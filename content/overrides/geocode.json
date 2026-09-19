@@ -1,0 +1,39 @@
+{
+  "amulet-market": {
+    "lat": 13.756444,
+    "lng": 100.4889146,
+    "note": "OSM matched an Amulet Market on Maha Chai Road; the CSV address is Th Maha Rat. Pinned on Tha Phra Chan, by Wat Mahathat, from Nominatim on 2026-09-19."
+  },
+  "ban-baat-monk-s-bowl-village": {
+    "lat": 13.7510414,
+    "lng": 100.5057734,
+    "note": "OSM does not hold the village itself. Pinned on Ban Bat Community, Pom Prap Sattru Phai, from Nominatim on 2026-09-19."
+  },
+  "bang-kachao": {
+    "lat": 13.6922279,
+    "lng": 100.5637361,
+    "note": "The green area has no single OSM node. Pinned on the Bang Kachao subdistrict office, Phra Pradaeng, from Nominatim on 2026-09-19."
+  },
+  "likhit-kai-yang": {
+    "skip": true,
+    "note": "OSM has no record under any query tried. Needs coordinates read off a map."
+  },
+  "moon-bar-banyan-tree": {
+    "skip": true,
+    "note": "OSM matches a different Moon Bar in Chatuchak, about 12 km from Banyan Tree on Sathon Tai. Banyan Tree Bangkok is not in OSM under any query tried."
+  },
+  "roof-at-sala-rattanakosin": {
+    "skip": true,
+    "note": "OSM returns the Thailand Cultural Centre, then Bangkok City Hall. The venue faces Wat Arun across the river and needs coordinates read off a map."
+  },
+  "suvarnabhumi-airport-bkk": {
+    "lat": 13.6818767,
+    "lng": 100.7485803,
+    "note": "OSM matched the GO Hotel of the same name. Pinned on Suvarnabhumi Airport itself, Racha Thewa, from Nominatim on 2026-09-19."
+  },
+  "wtf-bar-and-gallery": {
+    "lat": 13.726618,
+    "lng": 100.5761862,
+    "note": "Listed in OSM as WTF Gallery, 7 Soi Sukhumvit 51, from Nominatim on 2026-09-19."
+  }
+}

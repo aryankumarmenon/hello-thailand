@@ -1,0 +1,20 @@
+{
+  "id": "museum-of-siam",
+  "name": "Museum of Siam",
+  "city": "bangkok",
+  "topics": ["museum"],
+  "address": "Museum of Siam, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7439935,
+    "lng": 100.4938519
+  },
+  "geocode": {
+    "query": "Museum of Siam, Bangkok, Thailand",
+    "matched": "Museum of Siam, Soi Setthakan, Tha Tien Community, Phra Borom Maha Ratchawang Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

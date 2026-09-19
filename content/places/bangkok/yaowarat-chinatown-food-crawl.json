@@ -1,0 +1,20 @@
+{
+  "id": "yaowarat-chinatown-food-crawl",
+  "name": "Yaowarat (Chinatown) food crawl",
+  "city": "bangkok",
+  "topics": ["eat"],
+  "address": "Yaowarat Road, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.741907,
+    "lng": 100.5089484
+  },
+  "geocode": {
+    "query": "Yaowarat, Bangkok, Thailand",
+    "matched": "Yaowarat, Samphanthawong Subdistrict, Samphanthawong District, Bangkok, 10100, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "lumphini-park",
+  "name": "Lumphini Park",
+  "city": "bangkok",
+  "topics": ["park"],
+  "address": "Lumphini Park, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7306004,
+    "lng": 100.5415377
+  },
+  "geocode": {
+    "query": "Lumphini Park, Bangkok, Thailand",
+    "matched": "Lumphini Park, 192, Pathum Wan District, Bangkok, 10330, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "wat-arun",
+  "name": "Wat Arun",
+  "city": "bangkok",
+  "topics": ["temple"],
+  "address": "Wat Arun, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7438976,
+    "lng": 100.4885137
+  },
+  "geocode": {
+    "query": "Wat Arun, Bangkok, Thailand",
+    "matched": "Wat Arun, 158, Wang Doem Road, Wat Arun Subdistrict, Bangkok Yai District, Bangkok, 10600, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

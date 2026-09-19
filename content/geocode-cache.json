@@ -1,0 +1,367 @@
+{
+  "Amulet Market, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7544392,
+    "lng": 100.5047921,
+    "matched": "Amulet Market, Maha Chai Road, Lang Wat Ratchanatda Community, Bowon Niwet Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Amulet Market, Th Maha Rat, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Arena 10 / Demo / Funky Villa, Arena 10 Thonglor, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Arena 10, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7322902,
+    "lng": 100.5851337,
+    "matched": "Arena 10, Khlong Tan Nuea Subdistrict, Vadhana District, Bangkok, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Ayutthaya Historical Park, Thailand": {
+    "found": true,
+    "lat": 14.3535461,
+    "lng": 100.5622548,
+    "matched": "Ayutthaya Historical Park, Pratu Chai Subdistrict, Phra Nakhon Si Ayutthaya City Municipality, Phra Nakhon Si Ayutthaya District, Phra Nakhon Si Ayutthaya Province, 13000, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Ban Baat Monk's Bowl Village, Ban Baat Monks Bowl Village, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Ban Baat Monk's Bowl Village, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Ban Baat Monks Bowl Village, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Bang Kachao, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Brick Bar, Khao San Road, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7585971,
+    "lng": 100.4984729,
+    "matched": "Brick Bar, Khao San Road, Talat Yot Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Chatuchak Weekend Market, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.8002651,
+    "lng": 100.5511228,
+    "matched": "Chatuchak Market, Soi 62, Section 6, Chatuchak Subdistrict, Chatuchak District, Bangkok, 10900, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Erawan Shrine, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7443205,
+    "lng": 100.5404211,
+    "matched": "Erawan Shrine, Phloen Chit Road, Ratchaprasong, Lumphini Subdistrict, Pathum Wan District, Bangkok, 10330, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Golden Mount (Wat Saket), Wat Saket Golden Mount, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Golden Mount, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7538556,
+    "lng": 100.5066921,
+    "matched": "Golden Mount, 344, Paribatra Road, Ban Bat Community, Ban Bat Subdistrict, Pom Prap Sattru Phai District, Bangkok, 10100, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Hemlock Restaurant, Th Phra Athit, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7619476,
+    "lng": 100.4934922,
+    "matched": "Hemlock, Phra Athit Road, Phra Athit, Chana Songkhram Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Jay Fai, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7525335,
+    "lng": 100.5047365,
+    "matched": "Raan Jay Fai, Maha Chai Road, ชุมชนวังกรมพระสมมตอมรพันธุ์, Samran Rat Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Jay Fai, Th Mahachai, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Jim Thompson House, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7492268,
+    "lng": 100.5282811,
+    "matched": "Jim Thompson House, 6, Soi Kasem San 2, Wang Mai Subdistrict, Pathum Wan District, Bangkok, 10330, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Krua Apsorn, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7552412,
+    "lng": 100.501761,
+    "matched": "Krua Apsorn, 169, Dinso Road, Lang Wat Ratchanatda Community, Bowon Niwet Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Krua Apsorn, Th Din So, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Lak Meuang City Pillar, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Lak Meuang City Pillar, Lak Mueang, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Lak Mueang, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7524013,
+    "lng": 100.4947493,
+    "matched": "Lak Mueang Road, Tha Chang, Phra Borom Maha Ratchawang Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Likhit Kai Yang, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Likhit Kai Yang, Ratchadamnoen Stadium, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Lumphini Park, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7306004,
+    "lng": 100.5415377,
+    "matched": "Lumphini Park, 192, Pathum Wan District, Bangkok, 10330, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Lumpinee Boxing Stadium, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.8670039,
+    "lng": 100.608727,
+    "matched": "Lumpinee Boxing Stadium, 6, Ram Inthra Road, Anusawari Subdistrict, Bang Khen District, Bangkok, 10010, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Moon Bar (Banyan Tree), Moon Bar Banyan Tree, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Moon Bar, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.8311892,
+    "lng": 100.5592884,
+    "matched": "Moon Bar - Rooftop, 1/24, Soi Vibhavadi Rangsit 38, Lat Yao Subdistrict, Chatuchak District, Bangkok, 10900, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Museum of Siam, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7439935,
+    "lng": 100.4938519,
+    "matched": "Museum of Siam, Soi Setthakan, Tha Tien Community, Phra Borom Maha Ratchawang Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "National Museum Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.758177,
+    "lng": 100.4914819,
+    "matched": "Bangkok National Museum, Na Phra That Road, Tha Pra Chan, Phra Borom Maha Ratchawang Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Ratchadamnoen Stadium, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7610018,
+    "lng": 100.5087556,
+    "matched": "Rajadamnern Stadium, Phaniang Road, Supamit Community 2, Wat Sommanat Subdistrict, Pom Prap Sattru Phai District, Bangkok, 10100, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Ratchadamnoen Stadium, Rajadamnern Stadium, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "RCA (Route 66 / Onyx), RCA Royal City Avenue, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "RCA, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7511319,
+    "lng": 100.5758157,
+    "matched": "RCA, Bang Kapi Subdistrict, Huai Khwang District, Bangkok, 10310, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "River Vibe Restaurant Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7344426,
+    "lng": 100.5119774,
+    "matched": "River Vibe Restaurant & Bar, 768, Soi Wanit 2, Sieng Kong, Samphanthawong Subdistrict, Samphanthawong District, Bangkok, 10100, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Roof at Sala Rattanakosin, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Roof at Sala Rattanakosin, Sala Rattanakosin Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Sala Rattanakosin Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7662026,
+    "lng": 100.5740475,
+    "matched": "Thailand Cultural Centre, ลานหน้าศาลาไทย, Huai Khwang Subdistrict, Huai Khwang District, Bangkok, 10310, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Saxophone Pub, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7636293,
+    "lng": 100.5380821,
+    "matched": "Saxophone Pub and Restaurant, 3/8, Soi Ratchawithi 11, Thanon Phaya Thai Subdistrict, Ratchathewi District, Bangkok, 10400, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Saxophone Pub, Victory Monument, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Silom Thai Cooking School, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7226485,
+    "lng": 100.5244447,
+    "matched": "Silom Thai Cooking school, Soi Si Lom 13, Si Lom Subdistrict, Bang Rak District, Bangkok, 10500, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Sky Bar (State Tower), Sky Bar Lebua State Tower, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Sky Bar, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7212222,
+    "lng": 100.5170726,
+    "matched": "Sky Bar, Si Wiang Road, Si Lom Subdistrict, Bang Rak District, Bangkok, 10500, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Somboon Seafood Surawong, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.728217,
+    "lng": 100.5266806,
+    "matched": "Somboon Seafood, Surawong Road, Pramot, Suriyawong Subdistrict, Bang Rak District, Bangkok, 10500, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Somboon Seafood Surawong, Somboon Seafood, Surawong, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Studio Lam, Sukhumvit 51, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7263038,
+    "lng": 100.5764776,
+    "matched": "Studio Lam, Soi Sukhumvit 51, Khlong Tan Nuea Subdistrict, Vadhana District, Bangkok, 10110, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Suvarnabhumi Airport (BKK), Suvarnabhumi Airport, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Suvarnabhumi Airport, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.721553,
+    "lng": 100.7244682,
+    "matched": "GO Hotel Bangkok Suvarnabhumi Airport, 308/8, Lat Krabang Road, Lat Krabang Subdistrict, Lat Krabang District, Bangkok, 10520, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Th Khao San, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7589052,
+    "lng": 100.4972746,
+    "matched": "Khao San Road, Talat Yot Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Th Khao San, Khao San Road, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "The Giant Swing, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7523605,
+    "lng": 100.5006538,
+    "matched": "เทวาลัยพระศิวลึงค์, Dinso Road, Bot Phram Community, Sao Chingcha Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "The Giant Swing, Giant Swing Sao Ching Cha, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Thip Samai Pad Thai, Th Mahachai, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Thip Samai, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7527631,
+    "lng": 100.5048237,
+    "matched": "Thip Samai, Maha Chai Road, ชุมชนวังกรมพระสมมตอมรพันธุ์, Samran Rat Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Wat Arun, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7438976,
+    "lng": 100.4885137,
+    "matched": "Wat Arun, 158, Wang Doem Road, Wat Arun Subdistrict, Bangkok Yai District, Bangkok, 10600, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Wat Pho, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7463456,
+    "lng": 100.4927381,
+    "matched": "Wat Phra Chettuphon Wimon Mangkhalaram Ratchaworamahawihan, วงเวียน รด., Tha Tien Community, Phra Borom Maha Ratchawang Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Wat Phra Kaew & Grand Palace, Wat Phra Kaew, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Wat Phra Kaew, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7514974,
+    "lng": 100.4926592,
+    "matched": "Wat Phra Kaew, Na Phra Lan Road, Tha Chang, Phra Borom Maha Ratchawang Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "Wat Suthat, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.7501919,
+    "lng": 100.5003441,
+    "matched": "Wat Suthat, Ti Thong Road, Trok Wisut Community, Wat Ratchabophit Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "WTF Bar & Gallery, WTF Bar and Gallery, Thonglor, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "WTF Bar and Gallery, Thonglor, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "WTF Bar, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Yaowarat (Chinatown) food crawl, Yaowarat Road, Bangkok, Thailand": {
+    "found": false,
+    "fetchedOn": "2026-09-18"
+  },
+  "Yaowarat, Bangkok, Thailand": {
+    "found": true,
+    "lat": 13.741907,
+    "lng": 100.5089484,
+    "matched": "Yaowarat, Samphanthawong Subdistrict, Samphanthawong District, Bangkok, 10100, Thailand",
+    "fetchedOn": "2026-09-18"
+  }
+}

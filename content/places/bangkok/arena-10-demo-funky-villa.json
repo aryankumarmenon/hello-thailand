@@ -1,0 +1,20 @@
+{
+  "id": "arena-10-demo-funky-villa",
+  "name": "Arena 10 / Demo / Funky Villa",
+  "city": "bangkok",
+  "topics": ["nightlife"],
+  "address": "Arena 10 Thonglor, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7322902,
+    "lng": 100.5851337
+  },
+  "geocode": {
+    "query": "Arena 10, Bangkok, Thailand",
+    "matched": "Arena 10, Khlong Tan Nuea Subdistrict, Vadhana District, Bangkok, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

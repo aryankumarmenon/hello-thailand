@@ -1,0 +1,15 @@
+{
+  "id": "amulet-market",
+  "name": "Amulet Market",
+  "city": "bangkok",
+  "topics": ["market"],
+  "address": "Amulet Market, Th Maha Rat, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.756444,
+    "lng": 100.4889146
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

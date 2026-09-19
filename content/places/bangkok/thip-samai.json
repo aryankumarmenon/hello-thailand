@@ -1,0 +1,20 @@
+{
+  "id": "thip-samai",
+  "name": "Thip Samai",
+  "city": "bangkok",
+  "topics": ["eat"],
+  "address": "Thip Samai Pad Thai, Th Mahachai, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7527631,
+    "lng": 100.5048237
+  },
+  "geocode": {
+    "query": "Thip Samai, Bangkok, Thailand",
+    "matched": "Thip Samai, Maha Chai Road, ชุมชนวังกรมพระสมมตอมรพันธุ์, Samran Rat Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}

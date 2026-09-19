@@ -1,0 +1,20 @@
+{
+  "id": "wat-suthat",
+  "name": "Wat Suthat",
+  "city": "bangkok",
+  "topics": ["temple"],
+  "address": "Wat Suthat, Bangkok, Thailand",
+  "source": "editorial",
+  "coordinates": {
+    "lat": 13.7501919,
+    "lng": 100.5003441
+  },
+  "geocode": {
+    "query": "Wat Suthat, Bangkok, Thailand",
+    "matched": "Wat Suthat, Ti Thong Road, Trok Wisut Community, Wat Ratchabophit Subdistrict, Phra Nakhon District, Bangkok, 10200, Thailand",
+    "fetchedOn": "2026-09-18"
+  },
+  "price": {
+    "status": "unverified"
+  }
+}
