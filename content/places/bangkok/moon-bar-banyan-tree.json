@@ -5,6 +5,10 @@
   "topics": ["drink"],
   "address": "Moon Bar Banyan Tree, Bangkok, Thailand",
   "source": "editorial",
+  "coordinates": {
+    "lat": 13.7235907,
+    "lng": 100.5397921
+  },
   "price": {
     "status": "unverified"
   }
